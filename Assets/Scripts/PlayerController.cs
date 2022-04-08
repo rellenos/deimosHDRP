@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.AI;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 
@@ -30,14 +32,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private GameObject Player2;
     [SerializeField]
+    private GameObject gameOver;
+    [SerializeField]
     private bool saltfunciona = false;
-
 
 
     private CharacterController controller;
     private PlayerInput playerInput;
     private Vector3 playerVelocity;
     private Transform cameraTransform;
+    public Animator animAlythea;
+    private float x, y;
 
     private InputAction moveAction;
     private InputAction jumpAction;
@@ -47,11 +52,11 @@ public class PlayerController : MonoBehaviour
 
     private int bulletscount;
 
-
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
         playerInput = GetComponent<PlayerInput>();
+        animAlythea = GameObject.Find("Alythea").GetComponent<Animator>();
         cameraTransform = Camera.main.transform;
         moveAction = playerInput.actions["Move"];
         jumpAction = playerInput.actions["Jump"];
@@ -65,7 +70,6 @@ public class PlayerController : MonoBehaviour
 
         //Bloquejar corsor
         Cursor.lockState = CursorLockMode.Locked;
-
     }
 
     private void OnEnable()
@@ -73,27 +77,20 @@ public class PlayerController : MonoBehaviour
         shootAction.performed += _ => ShootGun();
         jumpAction.performed += _ => JumpUp();
         realoadActio.performed += _ => Reload();
-
     }
-
 
     private void OnDisable()
     {
         shootAction.performed -= _ => ShootGun();
         jumpAction.performed -= _ => JumpUp();
         realoadActio.performed -= _ => Reload();
-
     }
 
 
     private void ShootGun()
     {
-        
-
         if (Global.ISaim == true && Global.witchAvatarIsOn == 1 && Global.reloading == false)
         {
-            
-
             RaycastHit hit;
             GameObject bullet = GameObject.Instantiate(bulletPrefab, barrelTransform.position, Quaternion.identity, bulletParent);
             BulletController bulletController = bullet.GetComponent<BulletController>();
@@ -114,9 +111,7 @@ public class PlayerController : MonoBehaviour
                 Global.reloading = true;
                 StartCoroutine(ReloadWait());
             }
-        
         }
-
     }
 
     void Update()
@@ -133,11 +128,14 @@ public class PlayerController : MonoBehaviour
         move.y = 0;
         controller.Move(move * Time.deltaTime * playerSpeed);
 
-
+        Debug.Log(input);
         // Changes the height position of the player..
 
         playerVelocity.y += gravityValue * Time.deltaTime;       
         controller.Move(playerVelocity * Time.deltaTime);
+
+        animAlythea.SetFloat("VelX", input.x);
+        animAlythea.SetFloat("VelY", input.y);
 
 
         //Rotacio camera direcio
@@ -146,8 +144,6 @@ public class PlayerController : MonoBehaviour
             Quaternion targetRotation = Quaternion.Euler(0, cameraTransform.eulerAngles.y, 0);
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
-        
-
 
 
         if (Global.totalJump == 2)
@@ -159,9 +155,6 @@ public class PlayerController : MonoBehaviour
         {
             Global.totalJump = 0;
         }
-
-
-
     }
 
 
@@ -188,7 +181,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
      IEnumerator ReloadWait()
     {
         Debug.Log("Reloading: " + Global.reloading);
@@ -199,5 +191,17 @@ public class PlayerController : MonoBehaviour
         Global.reloading = false;
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Lava"))
+        Death();
+    }
 
+    void Death()
+    {
+        Destroy(Player1);
+        Destroy(Player2);
+        SceneManager.LoadScene("Level1");
+        //gameOver.gameObject.SetActive(true);
+    }
 }
