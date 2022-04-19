@@ -57,7 +57,6 @@ public class GrapplingHook : MonoBehaviour
     {
         isShootingGrap = false;
         Global.ISgrappling = false;
-        Debug.Log("Start!");
         lineRenderer.enabled = false;
     }
 
@@ -117,7 +116,6 @@ public class GrapplingHook : MonoBehaviour
                 Global.ISgrappling = true;
                 grapplingHook.parent = null;
                 grapplingHook.LookAt(hookPoint);
-                Debug.Log("HIT!");
                 lineRenderer.enabled = true;
             }
 

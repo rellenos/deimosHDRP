@@ -128,7 +128,6 @@ public class PlayerController : MonoBehaviour
         move.y = 0;
         controller.Move(move * Time.deltaTime * playerSpeed);
 
-        Debug.Log(input);
         // Changes the height position of the player..
 
         playerVelocity.y += gravityValue * Time.deltaTime;       
@@ -170,8 +169,6 @@ public class PlayerController : MonoBehaviour
             playerVelocity.y = 0;
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
             Global.totalJump++;
-            Debug.Log("Salts Despres1: " + Global.totalJump);
-
         }
 
         if (Global.groundedPlayer == true && Global.totalJump == 0)
