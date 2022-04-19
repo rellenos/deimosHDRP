@@ -8,11 +8,13 @@ TagManager:
   - PlayerInteractionZone
   - Lava
   - Bullet
+  - RedBox
+  - RedButton
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - grappleLayer
   - Water
   - UI
   - 
