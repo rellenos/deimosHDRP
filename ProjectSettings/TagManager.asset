@@ -10,6 +10,10 @@ TagManager:
   - Bullet
   - RedBox
   - RedButton
+  - GreenBox
+  - GreenButton
+  - BlueBox
+  - BlueButton
   layers:
   - Default
   - TransparentFX
