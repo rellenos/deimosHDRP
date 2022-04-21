@@ -6,6 +6,7 @@ public class BulletController : MonoBehaviour
 {
     [SerializeField]
     private GameObject bulletDecal;
+    public GameObject hitExplosion;
 
     private float speed = 50f;
     private float timeToDestroy = 3f;
@@ -32,6 +33,7 @@ public class BulletController : MonoBehaviour
     {
         ContactPoint contact = other.GetContact(0);
         GameObject.Instantiate(bulletDecal, contact.point + contact.normal * 0.0001f, Quaternion.LookRotation(contact.normal));
+        Instantiate (hitExplosion, bulletDecal.transform.position, bulletDecal.transform.rotation);
         Destroy(gameObject);
     }
 }

@@ -95,7 +95,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7853d4bded856e14fa85b327d1c7fa08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletDecal: {fileID: 0}
+  bulletDecal: {fileID: 8614099827936626386}
+  hitExplosion: {fileID: 6743240555978972019, guid: 353724085349b2e45a8110a8fe7bef2e, type: 3}
 --- !u!136 &8529142181941792666
 CapsuleCollider:
   m_ObjectHideFlags: 0
