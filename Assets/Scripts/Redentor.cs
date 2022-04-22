@@ -6,17 +6,27 @@ public class Redentor : MonoBehaviour
 {
    public int rutine;
    public float chrono;
+   public float grade;
+   public float maxLife;
+   public float actualLife;
+   public float timeRemaining = 2;
+   public bool attacking;
+   
+
    public Animator ani;
    public Quaternion angle;
-   public float grade;
-
    public GameObject target;
-   public bool attacking;
+
+
 
    void Start()
    {
        ani = GetComponent<Animator>();
        target = GameObject.Find("Player");
+
+       attacking = false;
+
+       actualLife=maxLife;
    }
 
    public void EnemyBehavior()
@@ -76,13 +86,32 @@ public class Redentor : MonoBehaviour
    }
 
    public void EndAnim()
-   {
+    {
+       Debug.Log ("fin ataque");
        ani.SetBool("attack", false);
-       attacking = false;
-   }
+       attacking = false; 
+    }
 
    void Update()
-   {
-       EnemyBehavior();
-   }
+    {
+        EnemyBehavior();
+
+        if (attacking = true && timeRemaining > 0)
+        {
+            timeRemaining -= Time.deltaTime;
+        }
+        
+        if (timeRemaining <= 0) 
+        {
+            timeRemaining = 2;
+            Debug.Log ("0");
+            EndAnim();
+        }
+    }
+
+   public void RemoveLife(float damage)
+    {
+       actualLife -= damage;
+    }
+
 }

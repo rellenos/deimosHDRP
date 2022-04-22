@@ -26,43 +26,19 @@ public class Button : MonoBehaviour
         blue1.SetBool ("Open", false);
         blue2.SetBool ("Open", true);
 
-        green1.SetBool ("Open", false);
-        green2.SetBool ("Open", true);
+        green1.SetBool ("Open", true);
+        green2.SetBool ("Open", false);
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("RedBox"))
         {
-            red1.SetBool ("Open", true);
-            red2.SetBool ("Open", false);
-
-            //redDoor1.transform.position = new Vector3(0,2,0) * Time.deltaTime;
-            //redDoor2.transform.position = new Vector3(0,-2,0) * Time.deltaTime;
-        }
-
-        if (other.gameObject.CompareTag("BlueBox"))
-        {
-            blue1.SetBool ("Open", true);
-            blue2.SetBool ("Open", false);
-        }
-
-        if (other.gameObject.CompareTag("GreenBox"))
-        {
-            green1.SetBool ("Open", true);
-            green2.SetBool ("Open", false);
-        }
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.CompareTag("RedBox"))
-        {
             red1.SetBool ("Open", false);
             red2.SetBool ("Open", true);
 
-            //redDoor1.transform.position = new Vector3(0,-2,0) * Time.deltaTime;
-            //redDoor2.transform.position = new Vector3(0,2,0) * Time.deltaTime;
+            //redDoor1.transform.position = new Vector3(0,2,0) * Time.deltaTime;
+            //redDoor2.transform.position = new Vector3(0,-2,0) * Time.deltaTime;
         }
 
         if (other.gameObject.CompareTag("BlueBox"))
@@ -75,6 +51,30 @@ public class Button : MonoBehaviour
         {
             green1.SetBool ("Open", false);
             green2.SetBool ("Open", true);
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("RedBox"))
+        {
+            red1.SetBool ("Open", true);
+            red2.SetBool ("Open", false);
+
+            //redDoor1.transform.position = new Vector3(redDoor1.transform.position.x,-2,redDoor1.transform.position.z) * Time.deltaTime;
+            //redDoor2.transform.position = new Vector3(redDoor2.transform.position.x,2,redDoor2.transform.position.z) * Time.deltaTime;
+        }
+
+        if (other.gameObject.CompareTag("BlueBox"))
+        {
+            blue1.SetBool ("Open", true);
+            blue2.SetBool ("Open", false);
+        }
+
+        if (other.gameObject.CompareTag("GreenBox"))
+        {
+            green1.SetBool ("Open", true);
+            green2.SetBool ("Open", false);
         }
     }
 }

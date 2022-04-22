@@ -12,7 +12,7 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
-    private float playerSpeed = 2.0f;
+    private float playerSpeed = 4.0f;
     [SerializeField]
     private float jumpHeight = 1.0f;
     [SerializeField]
