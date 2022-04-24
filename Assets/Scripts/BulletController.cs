@@ -8,7 +8,7 @@ public class BulletController : MonoBehaviour
     private GameObject bulletDecal;
     public GameObject hitExplosion;
 
-    private float speed = 50f;
+    private float speed = 200f;
     private float timeToDestroy = 3f;
 
     public Vector3 target { get; set; }
@@ -33,7 +33,19 @@ public class BulletController : MonoBehaviour
     {
         ContactPoint contact = other.GetContact(0);
         GameObject.Instantiate(bulletDecal, contact.point + contact.normal * 0.0001f, Quaternion.LookRotation(contact.normal));
-        Instantiate (hitExplosion, bulletDecal.transform.position, bulletDecal.transform.rotation);
-        Destroy(gameObject);
+        //Instantiate (hitExplosion, bulletDecal.transform.position, bulletDecal.transform.rotation);
+        //Destroy(gameObject);
+        explode();
+        //return;
+    }
+
+    void explode()
+    {
+        if (hitExplosion  != null)
+        {
+            GameObject explosion = (GameObject)Instantiate(hitExplosion, transform.position, transform.rotation);
+            Destroy(gameObject);
+            Destroy(explosion, 1f);
+        }
     }
 }
