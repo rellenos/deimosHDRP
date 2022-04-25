@@ -12,11 +12,11 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
-    private float playerSpeed = 4.0f;
+    private float playerSpeed = 6.0f;
     [SerializeField]
     private float jumpHeight = 1.0f;
     [SerializeField]
-    private float gravityValue = -9.81f;
+    public float gravityValue = -9.81f;
     [SerializeField]
     private float rotationSpeed = 100f;
     [SerializeField]
