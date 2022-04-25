@@ -96,7 +96,7 @@ public class Redentor : MonoBehaviour
     {
         EnemyBehavior();
 
-        if (attacking = true && timeRemaining > 0)
+        /* if (attacking = true && timeRemaining > 0)
         {
             timeRemaining -= Time.deltaTime;
         }
@@ -106,7 +106,7 @@ public class Redentor : MonoBehaviour
             timeRemaining = 2;
             Debug.Log ("0");
             EndAnim();
-        }
+        }*/
     }
 
    public void RemoveLife(float damage)

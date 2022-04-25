@@ -7,9 +7,10 @@ public class BulletController : MonoBehaviour
     [SerializeField]
     private GameObject bulletDecal;
     public GameObject hitExplosion;
+   
 
     private float speed = 200f;
-    private float timeToDestroy = 3f;
+    private float timeToDestroy = 2f;
 
     public Vector3 target { get; set; }
     public bool hit { get; set; }
@@ -33,6 +34,7 @@ public class BulletController : MonoBehaviour
     {
         ContactPoint contact = other.GetContact(0);
         GameObject.Instantiate(bulletDecal, contact.point + contact.normal * 0.0001f, Quaternion.LookRotation(contact.normal));
+    
         //Instantiate (hitExplosion, bulletDecal.transform.position, bulletDecal.transform.rotation);
         //Destroy(gameObject);
         explode();
