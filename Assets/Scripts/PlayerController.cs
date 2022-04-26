@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using TMPro;
 using UnityEngine.SceneManagement;
 
 
@@ -43,6 +44,8 @@ public class PlayerController : MonoBehaviour
     private Transform cameraTransform;
     public Animator animAlythea;
     public Animator animIR;
+
+    public TextMeshProUGUI ammoDisplay;
 
     public bool jump;
 
@@ -114,6 +117,7 @@ public class PlayerController : MonoBehaviour
                 bulletController.hit = false;
             }
             bulletscount ++;
+            ammoDisplay.text = bulletscount + " / 8";
             Debug.Log(bulletscount);
             if (bulletscount == 7){
                 Global.reloading = true;
@@ -197,7 +201,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("PreReaload");
         yield return new WaitForSeconds(3);
         Debug.Log("PosReaload");
-        bulletscount=0;
+        bulletscount = 0;
         Global.reloading = false;
     }
 
