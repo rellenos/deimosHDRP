@@ -12,7 +12,7 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
-    private float playerSpeed = 6.0f;
+    public float playerSpeed = 9f;
     [SerializeField]
     private float jumpHeight = 1.0f;
     [SerializeField]
@@ -42,6 +42,10 @@ public class PlayerController : MonoBehaviour
     private Vector3 playerVelocity;
     private Transform cameraTransform;
     public Animator animAlythea;
+    public Animator animIR;
+
+    public bool jump;
+
     private float x, y;
 
     private InputAction moveAction;
@@ -56,8 +60,12 @@ public class PlayerController : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         playerInput = GetComponent<PlayerInput>();
+
         animAlythea = GameObject.Find("Alythea").GetComponent<Animator>();
+        animIR = GameObject.Find("IR_67").GetComponent<Animator>();
+
         cameraTransform = Camera.main.transform;
+
         moveAction = playerInput.actions["Move"];
         jumpAction = playerInput.actions["Jump"];
         shootAction = playerInput.actions["Shoot"];
@@ -136,6 +144,9 @@ public class PlayerController : MonoBehaviour
         animAlythea.SetFloat("VelX", input.x);
         animAlythea.SetFloat("VelY", input.y);
 
+        animIR.SetFloat("VelX", input.x);
+        animIR.SetFloat("VelY", input.y);
+
 
         //Rotacio camera direcio
         //comprobar que no hi ha input de moviment
@@ -169,12 +180,14 @@ public class PlayerController : MonoBehaviour
             playerVelocity.y = 0;
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
             Global.totalJump++;
+            //animAlythea.SetBool("jump", true);
         }
 
         if (Global.groundedPlayer == true && Global.totalJump == 0)
         {
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
             Global.totalJump++;
+            //animAlythea.SetBool("jump", false);
         }
     }
 

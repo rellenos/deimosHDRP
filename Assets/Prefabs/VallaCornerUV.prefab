@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 116227820894633718}
   - component: {fileID: 3905525788413145427}
   - component: {fileID: 1285707646815356313}
+  - component: {fileID: 1898042285550666600}
+  - component: {fileID: 4193284053567522181}
   m_Layer: 0
   m_Name: VallaCornerUV
   m_TagString: Untagged
@@ -81,3 +83,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1898042285550666600
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 781159283462071372}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.06528902, y: 0.9631064, z: 0.9546831}
+  m_Center: {x: 0.03782929, y: -0.40897506, z: 0.16605175}
+--- !u!65 &4193284053567522181
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 781159283462071372}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9594047, y: 0.06217381, z: 0.95384425}
+  m_Center: {x: -0.4092284, y: 0.04149099, z: 0.16563375}

@@ -13,11 +13,6 @@ public class Button : MonoBehaviour
     public Animator green1;
     public Animator green2;
 
-    /* public GameObject redDoor1;
-    public GameObject redDoor2;
-    public GameObject blueDoor;
-    public GameObject yellowDoor; */
-
     void Start()
     {
         red1.SetBool ("Open", false);
@@ -36,9 +31,6 @@ public class Button : MonoBehaviour
         {
             red1.SetBool ("Open", false);
             red2.SetBool ("Open", true);
-
-            //redDoor1.transform.position = new Vector3(0,2,0) * Time.deltaTime;
-            //redDoor2.transform.position = new Vector3(0,-2,0) * Time.deltaTime;
         }
 
         if (other.gameObject.CompareTag("BlueBox"))
@@ -60,9 +52,6 @@ public class Button : MonoBehaviour
         {
             red1.SetBool ("Open", true);
             red2.SetBool ("Open", false);
-
-            //redDoor1.transform.position = new Vector3(redDoor1.transform.position.x,-2,redDoor1.transform.position.z) * Time.deltaTime;
-            //redDoor2.transform.position = new Vector3(redDoor2.transform.position.x,2,redDoor2.transform.position.z) * Time.deltaTime;
         }
 
         if (other.gameObject.CompareTag("BlueBox"))

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7636869203977147125}
   - component: {fileID: 6797136357071428944}
   - component: {fileID: 8768702851543361946}
+  - component: {fileID: -1005804102133090341}
   m_Layer: 0
   m_Name: VallaRectaFinal
   m_TagString: Untagged
@@ -81,3 +82,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &-1005804102133090341
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7111268168426702927}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.775516, y: 2.422444, z: 1.977969}
+  m_Center: {x: -0.3377578, y: -0.00000017392306, z: 0.29}

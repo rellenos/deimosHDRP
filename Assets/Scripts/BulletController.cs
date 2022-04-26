@@ -9,8 +9,10 @@ public class BulletController : MonoBehaviour
     public GameObject hitExplosion;
    
 
-    private float speed = 200f;
-    private float timeToDestroy = 0.1f;
+    private float speed = 50f;
+    private float timeToDestroy = 5f;
+    public int damagePerShot = 10;
+    int shootableMask;
 
     public Vector3 target { get; set; }
     public bool hit { get; set; }
@@ -33,7 +35,7 @@ public class BulletController : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
         ContactPoint contact = other.GetContact(0);
-        GameObject.Instantiate(bulletDecal, contact.point + contact.normal * 0.0001f, Quaternion.LookRotation(contact.normal));
+        //GameObject.Instantiate(bulletDecal, contact.point + contact.normal * 0.0001f, Quaternion.LookRotation(contact.normal));
         
     
         //Instantiate (hitExplosion, bulletDecal.transform.position, bulletDecal.transform.rotation);
@@ -47,7 +49,7 @@ public class BulletController : MonoBehaviour
         if (hitExplosion  != null)
         {
             GameObject explosion = (GameObject)Instantiate(hitExplosion, transform.position, transform.rotation);
-            Destroy(gameObject);
+            Destroy(gameObject, 0.5f);
             Destroy(explosion, 1f);
         }
     }

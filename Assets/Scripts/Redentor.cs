@@ -7,17 +7,16 @@ public class Redentor : MonoBehaviour
    public int rutine;
    public float chrono;
    public float grade;
-   public float maxLife;
-   public float actualLife;
+   public float startingHealth = 100;
+   public float currentHealth;
    public float timeRemaining = 2;
    public bool attacking;
    
-
    public Animator ani;
    public Quaternion angle;
    public GameObject target;
 
-
+   bool isDead;
 
    void Start()
    {
@@ -26,12 +25,12 @@ public class Redentor : MonoBehaviour
 
        attacking = false;
 
-       actualLife=maxLife;
+       currentHealth = startingHealth;
    }
 
    public void EnemyBehavior()
    {
-       if (Vector3.Distance(transform.position, target.transform.position) > 10)
+       if (Vector3.Distance(transform.position, target.transform.position) > 30 && !isDead)
        {
             ani.SetBool("run", false);
             chrono += 1 * Time.deltaTime;
@@ -61,7 +60,7 @@ public class Redentor : MonoBehaviour
        }
        else
        {
-           if (Vector3.Distance(transform.position, target.transform.position) > 2 && !attacking)
+           if (Vector3.Distance(transform.position, target.transform.position) > 2 && !attacking && !isDead)
            {
                 var lookPos = target.transform.position - transform.position;
                 lookPos.y = 0;
@@ -109,9 +108,23 @@ public class Redentor : MonoBehaviour
         }*/
     }
 
-   public void RemoveLife(float damage)
-    {
-       actualLife -= damage;
+   public void TakeDamage(int amount, Vector3 hitPoint)
+   {
+       if(isDead)
+       return;
+
+       currentHealth -= amount;
+
+       if(currentHealth <= 0)
+       {
+           Death();
+       }
     }
 
+    void Death()
+    {
+        isDead = true;
+
+        ani.SetTrigger ("Dead");
+    }
 }

@@ -16,6 +16,11 @@ public class SwitchCharacter : MonoBehaviour
 
     public GameObject ScrpPick;
 
+    Vector3 originalPos;
+
+    public Animator animAlythea;
+    public Animator animIR;
+
 
 
 
@@ -23,6 +28,8 @@ public class SwitchCharacter : MonoBehaviour
     {
 
         changeAction = playerInput.actions["Change"];
+        animAlythea = GameObject.Find("Alythea").GetComponent<Animator>();
+        animIR = GameObject.Find("IR_67").GetComponent<Animator>();
 
     }
 
@@ -37,6 +44,11 @@ public class SwitchCharacter : MonoBehaviour
     private void OnDisable()
     {
         changeAction.performed -= _ => ChangeCharacter();
+    }
+
+    void Update()
+    {
+        originalPos = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
     }
 
 
@@ -61,6 +73,9 @@ public class SwitchCharacter : MonoBehaviour
 
                     character1.gameObject.SetActive(false);
                     character2.gameObject.SetActive(true);
+                    gameObject.transform.position = originalPos;
+                    animAlythea.enabled = false;
+                    animIR.enabled = true;
                     break;
 
                 case 2:
@@ -73,6 +88,9 @@ public class SwitchCharacter : MonoBehaviour
 
                     character1.gameObject.SetActive(true);
                     character2.gameObject.SetActive(false);
+                    gameObject.transform.position = originalPos;
+                    animAlythea.enabled = true;
+                    animIR.enabled = false;
                     break;
             }
         }
