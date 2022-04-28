@@ -2,25 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class Monolith : MonoBehaviour
 {
-    bool activated;
     public Animator ani;
+    public GameObject particlesDeco;
+    public GameObject UI;
+    private PlayerInput playerInput;
+    private InputAction eAction;
 
     void Start()
     {
         ani = GetComponent<Animator>();
         ani.SetBool("activated", false);
-        activated = false;
+        eAction = playerInput.actions["Grab"];
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log ("activado");
-            ani.SetBool("activated", true);
+            UI.SetActive(true);
+            if (eAction)
+            {
+                Debug.Log ("activado");
+                ani.SetBool("activated", true);
+                particlesDeco.SetActive(true);
+            } 
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        UI.SetActive(false);
     }
 }

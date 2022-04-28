@@ -20,4 +20,5 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Test puzzles.unity
     guid: 789129865fd9772498a54a8e01970d9a
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: f2cd9052c4bd23543a7a9f411aabd2ef, type: 2}
