@@ -74,8 +74,8 @@ public class SwitchCharacter : MonoBehaviour
                     character1.gameObject.SetActive(false);
                     character2.gameObject.SetActive(true);
                     gameObject.transform.position = originalPos;
-                    animAlythea.enabled = false;
-                    animIR.enabled = true;
+                    //animAlythea.enabled = false;
+                    //animIR.enabled = true;
                     break;
 
                 case 2:
@@ -89,8 +89,8 @@ public class SwitchCharacter : MonoBehaviour
                     character1.gameObject.SetActive(true);
                     character2.gameObject.SetActive(false);
                     gameObject.transform.position = originalPos;
-                    animAlythea.enabled = true;
-                    animIR.enabled = false;
+                    //animAlythea.enabled = true;
+                    //animIR.enabled = false;
                     break;
             }
         }

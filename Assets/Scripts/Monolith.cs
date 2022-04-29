@@ -9,6 +9,7 @@ public class Monolith : MonoBehaviour
     public Animator ani;
     public GameObject particlesDeco;
     public GameObject UI;
+    [SerializeField]
     private PlayerInput playerInput;
     private InputAction eAction;
 
@@ -19,12 +20,13 @@ public class Monolith : MonoBehaviour
         eAction = playerInput.actions["Grab"];
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
             UI.SetActive(true);
-            if (eAction)
+
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 Debug.Log ("activado");
                 ani.SetBool("activated", true);
