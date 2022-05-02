@@ -154,7 +154,7 @@ GameObject:
   - component: {fileID: -4772984198993412024}
   m_Layer: 0
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -238,6 +238,7 @@ MonoBehaviour:
   bulletDecal: {fileID: 8614099827936626386}
   hitExplosion: {fileID: 6743240555978972019, guid: 353724085349b2e45a8110a8fe7bef2e, type: 3}
   damagePerShot: 10
+  damage: 10
 --- !u!136 &4199411362702425210
 CapsuleCollider:
   m_ObjectHideFlags: 0

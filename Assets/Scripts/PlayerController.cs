@@ -7,13 +7,11 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-
-
 [RequireComponent(typeof(CharacterController), typeof(PlayerInput))]
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
-    public float playerSpeed = 9f;
+    public float playerSpeed = 7f;
     [SerializeField]
     private float jumpHeight = 1.0f;
     [SerializeField]
@@ -37,7 +35,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private bool saltfunciona = false;
 
-
     private CharacterController controller;
     private PlayerInput playerInput;
     private Vector3 playerVelocity;
@@ -46,6 +43,10 @@ public class PlayerController : MonoBehaviour
     public Animator animIR;
 
     public TextMeshProUGUI ammoDisplay;
+    public Image healthBar;
+
+    public float maxHealth;
+    public float currentHealth;
 
     public bool jump;
 
@@ -78,9 +79,10 @@ public class PlayerController : MonoBehaviour
         bulletscount = 0;
         Global.reloading = false;
 
-
-        //Bloquejar corsor
+        //Bloquejar cursor
         Cursor.lockState = CursorLockMode.Locked;
+
+        currentHealth = maxHealth;
     }
 
     private void OnEnable()
@@ -96,7 +98,6 @@ public class PlayerController : MonoBehaviour
         jumpAction.performed -= _ => JumpUp();
         realoadActio.performed -= _ => Reload();
     }
-
 
     private void ShootGun()
     {
@@ -140,6 +141,8 @@ public class PlayerController : MonoBehaviour
         move.y = 0;
         controller.Move(move * Time.deltaTime * playerSpeed);
 
+        //controller.Jump(animAlythea.SetBool("jump", true));
+
         // Changes the height position of the player..
 
         playerVelocity.y += gravityValue * Time.deltaTime;       
@@ -151,8 +154,7 @@ public class PlayerController : MonoBehaviour
         animIR.SetFloat("VelX", input.x);
         animIR.SetFloat("VelY", input.y);
 
-
-        //Rotacio camera direcio
+        //Rotacio camera direccio
         //comprobar que no hi ha input de moviment
         if(input != Vector2.zero || Global.ISaim == true){
             Quaternion targetRotation = Quaternion.Euler(0, cameraTransform.eulerAngles.y, 0);
@@ -163,14 +165,14 @@ public class PlayerController : MonoBehaviour
         if (Global.totalJump == 2)
         {
             Global.totalJump = 0;
-
         }
         if (Global.totalJump <= 2 && Global.witchAvatarIsOn == 2)
         {
             Global.totalJump = 0;
         }
-    }
 
+        healthBar.fillAmount = currentHealth / maxHealth;
+    }
 
     public void Reload(){
         Global.reloading = true;
@@ -195,7 +197,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-     IEnumerator ReloadWait()
+    IEnumerator ReloadWait()
     {
         Debug.Log("Reloading: " + Global.reloading);
         Debug.Log("PreReaload");

@@ -71,11 +71,12 @@ public class SwitchCharacter : MonoBehaviour
                 case 1:
                     Global.witchAvatarIsOn = 2;
 
+                    animAlythea.keepAnimatorControllerStateOnDisable = true;
                     character1.gameObject.SetActive(false);
                     character2.gameObject.SetActive(true);
+                    //animAlythea.Rebind();
+                    //animIR.Rebind();
                     gameObject.transform.position = originalPos;
-                    //animAlythea.enabled = false;
-                    //animIR.enabled = true;
                     break;
 
                 case 2:
@@ -85,12 +86,12 @@ public class SwitchCharacter : MonoBehaviour
                     //DROP OBJECT POSSIBLE CANVIAR A FUNCIO EN EL PICKUPOBEJC
                     //pickUpObj();
 
-
+                    animIR.keepAnimatorControllerStateOnDisable = true;
                     character1.gameObject.SetActive(true);
                     character2.gameObject.SetActive(false);
                     gameObject.transform.position = originalPos;
-                    //animAlythea.enabled = true;
-                    //animIR.enabled = false;
+                    //animAlythea.Rebind();
+                    //animIR.Rebind();
                     break;
             }
         }

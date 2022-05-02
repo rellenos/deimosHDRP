@@ -11,11 +11,12 @@ public class BulletController : MonoBehaviour
 
     private float speed = 50f;
     private float timeToDestroy = 5f;
-    public int damagePerShot = 10;
     int shootableMask;
 
     public Vector3 target { get; set; }
     public bool hit { get; set; }
+
+    public int damage = 50;
     
 
     private void OnEnable()

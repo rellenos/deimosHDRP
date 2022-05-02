@@ -7,7 +7,7 @@ public class Redentor : MonoBehaviour
    public int rutine;
    public float chrono;
    public float grade;
-   public float startingHealth = 100;
+   public float maxHealth = 100;
    public float currentHealth;
    public float timeRemaining = 2;
    public bool attacking;
@@ -25,7 +25,7 @@ public class Redentor : MonoBehaviour
 
        attacking = false;
 
-       currentHealth = startingHealth;
+       currentHealth = maxHealth;
    }
 
    public void EnemyBehavior()
@@ -108,23 +108,26 @@ public class Redentor : MonoBehaviour
         }*/
     }
 
-   public void TakeDamage(int amount, Vector3 hitPoint)
-   {
-       if(isDead)
-       return;
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Bullet"))
+        {
+            currentHealth --;
 
-       currentHealth -= amount;
-
-       if(currentHealth <= 0)
-       {
-           Death();
-       }
+            if(currentHealth <= 0)
+            {
+                Death();
+            }
+        }
     }
 
     void Death()
     {
         isDead = true;
 
-        ani.SetTrigger ("Dead");
+        ani.SetBool("Run", false);
+        ani.SetBool("Walk", false);
+        ani.SetBool("Attack", false);
+        ani.SetBool("Dead", true);
     }
 }
