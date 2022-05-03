@@ -45,8 +45,9 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI ammoDisplay;
     public Image healthBar;
 
-    public float maxHealth;
+    public float maxHealth = 100;
     public float currentHealth;
+    public float damage = 10;
 
     public bool jump;
 
@@ -60,6 +61,13 @@ public class PlayerController : MonoBehaviour
 
     private int bulletscount;
 
+    //public bool isDead;
+
+    private void Start()
+    {
+        currentHealth = maxHealth;
+    }
+    
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
@@ -82,7 +90,7 @@ public class PlayerController : MonoBehaviour
         //Bloquejar cursor
         Cursor.lockState = CursorLockMode.Locked;
 
-        currentHealth = maxHealth;
+        
     }
 
     private void OnEnable()
@@ -118,7 +126,7 @@ public class PlayerController : MonoBehaviour
                 bulletController.hit = false;
             }
             bulletscount ++;
-            ammoDisplay.text = bulletscount + " / 8";
+            ammoDisplay.text = bulletscount + " / 7";
             //Debug.Log(bulletscount);
             if (bulletscount == 7){
                 Global.reloading = true;
@@ -200,9 +208,9 @@ public class PlayerController : MonoBehaviour
     IEnumerator ReloadWait()
     {
         Debug.Log("Reloading: " + Global.reloading);
-        Debug.Log("PreReaload");
+        //Debug.Log("PreReaload");
         yield return new WaitForSeconds(3);
-        Debug.Log("PosReaload");
+        //Debug.Log("PosReaload");
         bulletscount = 0;
         Global.reloading = false;
     }
@@ -211,13 +219,24 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Lava"))
         Death();
+
+        if (other.gameObject.CompareTag("Punch"))
+        {
+            currentHealth = currentHealth - damage;
+            Debug.Log ("hit");
+
+            if(currentHealth <= 0)
+            {
+                Death();
+            }
+        }
     }
 
     void Death()
     {
-        Destroy(Player1);
-        Destroy(Player2);
-        SceneManager.LoadScene("Level1");
+        //Destroy(Player1);
+        //Destroy(Player2);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         //gameOver.gameObject.SetActive(true);
     }
 }

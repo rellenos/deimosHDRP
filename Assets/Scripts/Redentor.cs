@@ -5,20 +5,22 @@ using UnityEngine;
 public class Redentor : MonoBehaviour
 {
    public int rutine;
+
    public float chrono;
    public float grade;
    public float maxHealth = 100;
    public float currentHealth;
    public float timeRemaining = 2;
-   public bool attacking;
    public float damage = 10;
+   public float destroyDelay = 7;
 
-   
+   public bool attacking;
+   public bool isDead;
+
+   public GameObject deathExplosion;
    public Animator ani;
    public Quaternion angle;
    public GameObject target;
-
-   bool isDead;
 
    void Start()
    {
@@ -88,7 +90,7 @@ public class Redentor : MonoBehaviour
 
    public void EndAnim()
     {
-       Debug.Log ("fin ataque");
+       //Debug.Log ("fin ataque");
        ani.SetBool("attack", false);
        attacking = false; 
     }
@@ -98,29 +100,16 @@ public class Redentor : MonoBehaviour
         if(!isDead)
         {
             EnemyBehavior();
-            Debug.Log (currentHealth);
+            //Debug.Log (currentHealth);
         }
-
-        /* if (attacking = true && timeRemaining > 0)
-        {
-            timeRemaining -= Time.deltaTime;
-        }
-        
-        if (timeRemaining <= 0) 
-        {
-            timeRemaining = 2;
-            Debug.Log ("0");
-            EndAnim();
-        }*/
     }
 
     private void OnCollisionEnter(Collision other)    
-   
     {
         if (other.gameObject.CompareTag("Bullet"))
         {
             currentHealth = currentHealth - damage;
-            Debug.Log ("muerte");
+            //Debug.Log ("muerte");
 
             if(currentHealth <= 0)
             {
@@ -132,10 +121,15 @@ public class Redentor : MonoBehaviour
     void Death()
     {
         isDead = true;
-
-        //ani.SetBool("run", false);
-        //ani.SetBool("walk", false);
-        //ani.SetBool("attack", false);
         ani.SetTrigger("dead");
+        StartCoroutine(Destroy());
+    }
+
+    IEnumerator Destroy()
+    {
+        yield return new WaitForSeconds(destroyDelay);
+        Destroy(gameObject);
+        GameObject explosion = (GameObject)Instantiate(deathExplosion, transform.position, transform.rotation);
+        Destroy(explosion, 2f);
     }
 }

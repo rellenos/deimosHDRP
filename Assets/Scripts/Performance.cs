@@ -10,12 +10,20 @@ public class Performance : MonoBehaviour
     public List<GameObject> objOptimizar;
     public static bool rendimiento;
 
+    public int targetFrameRate = 60;
+
+    private void Start()
+    {
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = targetFrameRate;
+    }
+
     void Update()
     {
         float fps = 1 / Time.unscaledDeltaTime;
         fpsDisplay.text = fps + " FPS";
 
-        if(fps < 600){
+        /*if(fps < 600){
             rendimiento = false;
             for(int i = 0; i < objOptimizar.Count; i++){
                 objOptimizar[i].SetActive(false);
@@ -25,7 +33,7 @@ public class Performance : MonoBehaviour
             for(int i = 0; i < objOptimizar.Count; i++){
                 objOptimizar[i].SetActive(true);
             }
-        }
+        }*/
 
     }
 }

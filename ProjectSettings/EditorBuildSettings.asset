@@ -8,16 +8,19 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Main Menu.unity
     guid: 5dcbdad74c7551b4ea4794846b2cc507
   - enabled: 1
+    path: Assets/Scenes/Cinematica.unity
+    guid: 9945c02895fb6594f8ef58662855b08a
+  - enabled: 1
     path: Assets/Scenes/Level1.unity
     guid: 864e5be1f7ab8964c84c2f60e8a95a7f
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Options.unity
     guid: 0adcad32737070c489caec2755f9fb97
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Test puzzles.unity
     guid: 789129865fd9772498a54a8e01970d9a
   m_configObjects:
