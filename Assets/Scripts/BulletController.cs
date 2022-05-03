@@ -16,7 +16,7 @@ public class BulletController : MonoBehaviour
     public Vector3 target { get; set; }
     public bool hit { get; set; }
 
-    public int damage = 50;
+    //public int damage = 50;
     
 
     private void OnEnable()

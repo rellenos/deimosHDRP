@@ -119,7 +119,7 @@ public class PlayerController : MonoBehaviour
             }
             bulletscount ++;
             ammoDisplay.text = bulletscount + " / 8";
-            Debug.Log(bulletscount);
+            //Debug.Log(bulletscount);
             if (bulletscount == 7){
                 Global.reloading = true;
                 StartCoroutine(ReloadWait());

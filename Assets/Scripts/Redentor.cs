@@ -11,6 +11,8 @@ public class Redentor : MonoBehaviour
    public float currentHealth;
    public float timeRemaining = 2;
    public bool attacking;
+   public float damage = 10;
+
    
    public Animator ani;
    public Quaternion angle;
@@ -91,9 +93,13 @@ public class Redentor : MonoBehaviour
        attacking = false; 
     }
 
-   void Update()
+    void Update()
     {
-        EnemyBehavior();
+        if(!isDead)
+        {
+            EnemyBehavior();
+            Debug.Log (currentHealth);
+        }
 
         /* if (attacking = true && timeRemaining > 0)
         {
@@ -108,11 +114,13 @@ public class Redentor : MonoBehaviour
         }*/
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnCollisionEnter(Collision other)    
+   
     {
         if (other.gameObject.CompareTag("Bullet"))
         {
-            currentHealth --;
+            currentHealth = currentHealth - damage;
+            Debug.Log ("muerte");
 
             if(currentHealth <= 0)
             {
@@ -125,9 +133,9 @@ public class Redentor : MonoBehaviour
     {
         isDead = true;
 
-        ani.SetBool("Run", false);
-        ani.SetBool("Walk", false);
-        ani.SetBool("Attack", false);
-        ani.SetBool("Dead", true);
+        //ani.SetBool("run", false);
+        //ani.SetBool("walk", false);
+        //ani.SetBool("attack", false);
+        ani.SetTrigger("dead");
     }
 }
