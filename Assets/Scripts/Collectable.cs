@@ -9,19 +9,19 @@ public class Collectable : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))
         {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                img.SetActive(true);
-                gameObject.SetActive(false);
-            } 
+            img.SetActive(true);
+            gameObject.SetActive(false);
         }
     }
 
-    public void Button()
+    private void Update()
     {
-        Debug.Log ("cerrar");
-        img.SetActive(false);
-    }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            Debug.Log("Cerrar");
+            img.SetActive(false);
+        } 
+    } 
 }

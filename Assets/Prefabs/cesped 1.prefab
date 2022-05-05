@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &469645319154768729
 Transform:
@@ -47,6 +47,10 @@ PrefabInstance:
     - target: {fileID: 1508084164562519047, guid: 7e0c3bbc78f6ac94988cd09b41a2609b, type: 3}
       propertyPath: m_Name
       value: cesped (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1508084164562519047, guid: 7e0c3bbc78f6ac94988cd09b41a2609b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 2280538995221094077, guid: 7e0c3bbc78f6ac94988cd09b41a2609b, type: 3}
       propertyPath: m_RootOrder
@@ -122,6 +126,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cesped
       objectReference: {fileID: 0}
+    - target: {fileID: 1508084164562519047, guid: 7e0c3bbc78f6ac94988cd09b41a2609b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 2280538995221094077, guid: 7e0c3bbc78f6ac94988cd09b41a2609b, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -183,6 +191,10 @@ PrefabInstance:
     - target: {fileID: 1508084164562519047, guid: 7e0c3bbc78f6ac94988cd09b41a2609b, type: 3}
       propertyPath: m_Name
       value: cesped (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1508084164562519047, guid: 7e0c3bbc78f6ac94988cd09b41a2609b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 2280538995221094077, guid: 7e0c3bbc78f6ac94988cd09b41a2609b, type: 3}
       propertyPath: m_RootOrder
@@ -258,6 +270,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cesped (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 1508084164562519047, guid: 7e0c3bbc78f6ac94988cd09b41a2609b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 2280538995221094077, guid: 7e0c3bbc78f6ac94988cd09b41a2609b, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -327,6 +343,10 @@ PrefabInstance:
     - target: {fileID: 1508084164562519047, guid: 7e0c3bbc78f6ac94988cd09b41a2609b, type: 3}
       propertyPath: m_Name
       value: cesped (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1508084164562519047, guid: 7e0c3bbc78f6ac94988cd09b41a2609b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 2280538995221094077, guid: 7e0c3bbc78f6ac94988cd09b41a2609b, type: 3}
       propertyPath: m_RootOrder
@@ -402,6 +422,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cesped (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1508084164562519047, guid: 7e0c3bbc78f6ac94988cd09b41a2609b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 2280538995221094077, guid: 7e0c3bbc78f6ac94988cd09b41a2609b, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -475,6 +499,10 @@ PrefabInstance:
     - target: {fileID: 1508084164562519047, guid: 7e0c3bbc78f6ac94988cd09b41a2609b, type: 3}
       propertyPath: m_Name
       value: cesped (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1508084164562519047, guid: 7e0c3bbc78f6ac94988cd09b41a2609b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 2280538995221094077, guid: 7e0c3bbc78f6ac94988cd09b41a2609b, type: 3}
       propertyPath: m_RootOrder

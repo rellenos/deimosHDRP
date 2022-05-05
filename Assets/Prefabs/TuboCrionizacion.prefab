@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2936574456163154559
 Transform:
@@ -140,6 +140,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 3db5689cb9a9e474db32eff262606a11, type: 3}
       propertyPath: m_Name
       value: Tubo crionizacion_cristalroto
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3db5689cb9a9e474db32eff262606a11, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3db5689cb9a9e474db32eff262606a11, type: 3}

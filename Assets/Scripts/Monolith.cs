@@ -28,7 +28,7 @@ public class Monolith : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                Debug.Log ("activado");
+                //Debug.Log ("activado");
                 ani.SetBool("activated", true);
                 particlesDeco.SetActive(true);
             } 

@@ -19,9 +19,6 @@ public class SwitchVCam : MonoBehaviour
     [SerializeField]
     private GameObject Reload;
 
-
-
-
     private CinemachineVirtualCamera virutalCamera;
     private InputAction aimAction;
 
@@ -33,11 +30,8 @@ public class SwitchVCam : MonoBehaviour
 
     private void OnEnable()
     {
-
-
-            aimAction.performed += _ => StartAim();
-            aimAction.canceled += _ => CancelAim();
-
+        aimAction.performed += _ => StartAim();
+        aimAction.canceled += _ => CancelAim();
     }
 
     private void OnDisable()
@@ -48,19 +42,20 @@ public class SwitchVCam : MonoBehaviour
 
     public void StartAim()
     {
-            Global.ISaim = true;
-            virutalCamera.Priority += priorityBoostAmount;
-            aimCanvas.enabled = true;
-            thirdPersonCanvas.enabled = false;
+        Global.ISaim = true;
+        virutalCamera.Priority += priorityBoostAmount;
+        aimCanvas.enabled = true;
+        thirdPersonCanvas.enabled = false;
+
         if (Global.reloading != false)
         {
-            Debug.Log("Hola?");
             Reload.gameObject.SetActive(true);
         }
         else
         {
             Reload.gameObject.SetActive(false);
         }
+
         if(Global.witchAvatarIsOn == 2 && Global.ISaim == true)
         {
             grappling.gameObject.SetActive(true);

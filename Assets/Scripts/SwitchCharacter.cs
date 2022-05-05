@@ -5,24 +5,18 @@ using UnityEngine.InputSystem;
 
 public class SwitchCharacter : MonoBehaviour
 {
-    [SerializeField]
-    private PlayerInput playerInput;
+    
+    [Header("Player")]
+    [SerializeField] private PlayerInput playerInput;
+    [SerializeField] public GameObject character1, character2, ScrpPick;
+
+    [Header("Animator")]
+    [SerializeField] Animator animAlythea;
+    [SerializeField] Animator animIR;
 
     private InputAction changeAction;
-
-    public GameObject character1, character2;
-
     private bool groundedPlayer;
-
-    public GameObject ScrpPick;
-
     Vector3 originalPos;
-
-    public Animator animAlythea;
-    public Animator animIR;
-
-
-
 
     private void Awake()
     {

@@ -10,48 +10,43 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(CharacterController), typeof(PlayerInput))]
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField]
-    public float playerSpeed = 7f;
-    [SerializeField]
-    private float jumpHeight = 1.0f;
-    [SerializeField]
-    public float gravityValue = -9.81f;
-    [SerializeField]
-    private float rotationSpeed = 100f;
-    [SerializeField]
-    private GameObject bulletPrefab;
-    [SerializeField]
-    private Transform barrelTransform;
-    [SerializeField]
-    private Transform bulletParent;
-    [SerializeField]
-    private float bulletHitMissDistance = 25f;
-    [SerializeField]
-    private GameObject Player1;
-    [SerializeField]
-    private GameObject Player2;
-    [SerializeField]
-    private GameObject gameOver;
-    [SerializeField]
-    private bool saltfunciona = false;
+    
+    [Header("Values")]
+    [SerializeField] float playerSpeed = 7;
+    [SerializeField] float jumpHeight = 1;
+    [SerializeField] float gravityValue = -9.81f;
+    [SerializeField] float rotationSpeed = 100;
+    [SerializeField] float maxHealth = 100;
+    [SerializeField] float currentHealth;
+    [SerializeField] float damage = 10;
+    [SerializeField] CharacterController controller;
 
-    private CharacterController controller;
-    private PlayerInput playerInput;
-    private Vector3 playerVelocity;
-    private Transform cameraTransform;
-    public Animator animAlythea;
-    public Animator animIR;
+    [Header("Character")]
+    [SerializeField] GameObject Player1;
+    [SerializeField] GameObject Player2;
+    [SerializeField] public Animator animAlythea;
+    [SerializeField] public Animator animIR;
+    [SerializeField] private PlayerInput playerInput;
+    [SerializeField] GameObject GroundChecker;
 
+    [Header("Gun")]
+    [SerializeField] GameObject bulletPrefab;
+    [SerializeField] Transform barrelTransform;
+    [SerializeField] Transform bulletParent;
+    [SerializeField] float bulletHitMissDistance = 25;
+
+    [Header("UI")]
     public TextMeshProUGUI ammoDisplay;
     public Image healthBar;
+    public GameObject gameOver;
 
-    public float maxHealth = 100;
-    public float currentHealth;
-    public float damage = 10;
-
-    public bool jump;
+    [Header("Interaction")]
+    [SerializeField] public bool jump;
+    [SerializeField] bool saltfunciona = false;
 
     private float x, y;
+    private Vector3 playerVelocity;
+    private Transform cameraTransform;
 
     private InputAction moveAction;
     private InputAction jumpAction;
@@ -87,10 +82,9 @@ public class PlayerController : MonoBehaviour
         bulletscount = 0;
         Global.reloading = false;
 
-        //Bloquejar cursor
-        Cursor.lockState = CursorLockMode.Locked;
+        animAlythea.SetBool("jump", false);
 
-        
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void OnEnable()
@@ -143,6 +137,17 @@ public class PlayerController : MonoBehaviour
             playerVelocity.y = 0f;
         }
 
+        if (Global.groundedPlayer)
+        {
+            animAlythea.SetBool("jump", false);
+        }
+        else
+        {
+            animAlythea.SetBool("jump", true);
+        }
+
+
+
         Vector2 input = moveAction.ReadValue<Vector2>();
         Vector3 move = new Vector3(input.x, 0, input.y);
         move = move.x * cameraTransform.right.normalized + move.z * cameraTransform.forward.normalized;
@@ -151,14 +156,11 @@ public class PlayerController : MonoBehaviour
 
         //controller.Jump(animAlythea.SetBool("jump", true));
 
-        // Changes the height position of the player..
-
         playerVelocity.y += gravityValue * Time.deltaTime;       
         controller.Move(playerVelocity * Time.deltaTime);
 
         animAlythea.SetFloat("VelX", input.x);
         animAlythea.SetFloat("VelY", input.y);
-
         animIR.SetFloat("VelX", input.x);
         animIR.SetFloat("VelY", input.y);
 
@@ -194,15 +196,19 @@ public class PlayerController : MonoBehaviour
             playerVelocity.y = 0;
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
             Global.totalJump++;
-            //animAlythea.SetBool("jump", true);
         }
+    
 
         if (Global.groundedPlayer == true && Global.totalJump == 0)
         {
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
             Global.totalJump++;
-            //animAlythea.SetBool("jump", false);
+            //animAlythea.SetBool("jump", true);
         }
+        //else
+        //{
+            //animAlythea.SetBool("jump", false);
+        //}
     }
 
     IEnumerator ReloadWait()
@@ -223,7 +229,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Punch"))
         {
             currentHealth = currentHealth - damage;
-            Debug.Log ("hit");
+            //Debug.Log ("hit");
 
             if(currentHealth <= 0)
             {
@@ -231,6 +237,18 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
+    /*void OnTriggerStay(Collider GroundChecker)
+    {
+        if (GroundChecker.gameObject.CompareTag("Wall"))
+        {
+            animAlythea.SetBool("jump", false);
+        }
+        else
+        {
+            animAlythea.SetBool("jump", true);
+        }
+    }*/
 
     void Death()
     {

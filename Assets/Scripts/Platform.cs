@@ -4,41 +4,20 @@ using UnityEngine;
 
 public class Platform : MonoBehaviour
 {
-    
     public Rigidbody rb;
-
-    private float fallDelay = 1f;
-    //private float shakeAmount = 2f;
-    private float timeToDestroy = 5f;
-
-    //bool readyToShake = false;
-
-    Vector3 originalPos;
+    public float fallDelay = 0.3f;
+    public float timeToDestroy = 5f;
      
     void Start ()
     {
         rb = GetComponent<Rigidbody> ();
     }
 
-    void Update()
-    {
-        /*if(readyToShake)
-        {
-            Vector3 newPos = originalPos + Random.insideUnitSphere * (Time.deltaTime * shakeAmount);
-            newPos.x = transform.position.x;
-            newPos.y = transform.position.y;
-            newPos.z = transform.position.z;
-
-            transform.position = newPos;
-        }*/
-    }
-
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            //readyToShake = true;
-            Debug.Log ("tocando");
+            //Debug.Log ("tocando");
             StartCoroutine(FallAfterDelay());
             Destroy(gameObject, timeToDestroy);
         }

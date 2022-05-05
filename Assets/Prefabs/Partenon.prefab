@@ -41,7 +41,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1349517912638076063
 Transform:
@@ -147,6 +147,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: columna (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5dbf3c0e36fc8a44ca6175a84d35a770, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5dbf3c0e36fc8a44ca6175a84d35a770, type: 3}
 --- !u!4 &5678272682373497872 stripped
@@ -216,6 +220,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 5dbf3c0e36fc8a44ca6175a84d35a770, type: 3}
       propertyPath: m_Name
       value: columna (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5dbf3c0e36fc8a44ca6175a84d35a770, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5dbf3c0e36fc8a44ca6175a84d35a770, type: 3}
@@ -287,6 +295,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: columna (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5dbf3c0e36fc8a44ca6175a84d35a770, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5dbf3c0e36fc8a44ca6175a84d35a770, type: 3}
 --- !u!4 &5678272682295196061 stripped
@@ -357,6 +369,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: columna (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5dbf3c0e36fc8a44ca6175a84d35a770, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5dbf3c0e36fc8a44ca6175a84d35a770, type: 3}
 --- !u!4 &5678272682228465079 stripped
@@ -422,6 +438,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 92a5ba23d7d3c9f4ea16da77fc9ed277, type: 3}
       propertyPath: m_Name
       value: Partenon_cornise_1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92a5ba23d7d3c9f4ea16da77fc9ed277, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92a5ba23d7d3c9f4ea16da77fc9ed277, type: 3}
@@ -493,6 +513,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: columna (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5dbf3c0e36fc8a44ca6175a84d35a770, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5dbf3c0e36fc8a44ca6175a84d35a770, type: 3}
 --- !u!4 &5678272682041072275 stripped
@@ -558,6 +582,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1819103acfc96254bba980a13e1387c1, type: 3}
       propertyPath: m_Name
       value: Partenon_cornise_2 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1819103acfc96254bba980a13e1387c1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1819103acfc96254bba980a13e1387c1, type: 3}
@@ -629,6 +657,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: columna (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5dbf3c0e36fc8a44ca6175a84d35a770, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5dbf3c0e36fc8a44ca6175a84d35a770, type: 3}
 --- !u!4 &5678272681912987083 stripped
@@ -695,6 +727,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Partenon_cornise_2 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1819103acfc96254bba980a13e1387c1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1819103acfc96254bba980a13e1387c1, type: 3}
 --- !u!4 &5678272681848474682 stripped
@@ -760,6 +796,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c00397485344aab428c08420d45e1668, type: 3}
       propertyPath: m_Name
       value: Partenon_base
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c00397485344aab428c08420d45e1668, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c00397485344aab428c08420d45e1668, type: 3}
@@ -836,6 +876,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: columna (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5dbf3c0e36fc8a44ca6175a84d35a770, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5dbf3c0e36fc8a44ca6175a84d35a770, type: 3}
 --- !u!4 &5678272681562823681 stripped
@@ -901,6 +945,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 92a5ba23d7d3c9f4ea16da77fc9ed277, type: 3}
       propertyPath: m_Name
       value: Partenon_cornise_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 92a5ba23d7d3c9f4ea16da77fc9ed277, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92a5ba23d7d3c9f4ea16da77fc9ed277, type: 3}
@@ -972,6 +1020,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: columna (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5dbf3c0e36fc8a44ca6175a84d35a770, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5dbf3c0e36fc8a44ca6175a84d35a770, type: 3}
 --- !u!4 &5678272681419697926 stripped
@@ -1041,6 +1093,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 5dbf3c0e36fc8a44ca6175a84d35a770, type: 3}
       propertyPath: m_Name
       value: columna (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5dbf3c0e36fc8a44ca6175a84d35a770, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5dbf3c0e36fc8a44ca6175a84d35a770, type: 3}
@@ -1112,6 +1168,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: columna (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5dbf3c0e36fc8a44ca6175a84d35a770, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5dbf3c0e36fc8a44ca6175a84d35a770, type: 3}
 --- !u!4 &5678272681173824992 stripped
@@ -1177,6 +1237,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1819103acfc96254bba980a13e1387c1, type: 3}
       propertyPath: m_Name
       value: Partenon_cornise_2 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1819103acfc96254bba980a13e1387c1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1819103acfc96254bba980a13e1387c1, type: 3}
@@ -1244,6 +1308,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Partenon_cornise_2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1819103acfc96254bba980a13e1387c1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1819103acfc96254bba980a13e1387c1, type: 3}
 --- !u!4 &5678272681096981271 stripped
@@ -1309,6 +1377,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1819103acfc96254bba980a13e1387c1, type: 3}
       propertyPath: m_Name
       value: Partenon_cornise_2 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1819103acfc96254bba980a13e1387c1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1819103acfc96254bba980a13e1387c1, type: 3}
@@ -1380,6 +1452,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: columna (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5dbf3c0e36fc8a44ca6175a84d35a770, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5dbf3c0e36fc8a44ca6175a84d35a770, type: 3}
 --- !u!4 &5678272681024624726 stripped
@@ -1450,6 +1526,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: columna (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5dbf3c0e36fc8a44ca6175a84d35a770, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5dbf3c0e36fc8a44ca6175a84d35a770, type: 3}
 --- !u!4 &5678272681008991676 stripped
@@ -1515,6 +1595,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 1819103acfc96254bba980a13e1387c1, type: 3}
       propertyPath: m_Name
       value: Partenon_cornise_2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1819103acfc96254bba980a13e1387c1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1819103acfc96254bba980a13e1387c1, type: 3}
@@ -1586,6 +1670,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: columna (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5dbf3c0e36fc8a44ca6175a84d35a770, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5dbf3c0e36fc8a44ca6175a84d35a770, type: 3}
 --- !u!4 &5678272680833786587 stripped
@@ -1655,6 +1743,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 5dbf3c0e36fc8a44ca6175a84d35a770, type: 3}
       propertyPath: m_Name
       value: columna
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5dbf3c0e36fc8a44ca6175a84d35a770, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5dbf3c0e36fc8a44ca6175a84d35a770, type: 3}
@@ -1731,6 +1823,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: columna (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5dbf3c0e36fc8a44ca6175a84d35a770, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5dbf3c0e36fc8a44ca6175a84d35a770, type: 3}
 --- !u!4 &5678272680556351960 stripped
@@ -1800,6 +1896,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 5dbf3c0e36fc8a44ca6175a84d35a770, type: 3}
       propertyPath: m_Name
       value: columna (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5dbf3c0e36fc8a44ca6175a84d35a770, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5dbf3c0e36fc8a44ca6175a84d35a770, type: 3}
@@ -1871,6 +1971,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: columna (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5dbf3c0e36fc8a44ca6175a84d35a770, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5dbf3c0e36fc8a44ca6175a84d35a770, type: 3}
 --- !u!4 &5678272680386399227 stripped
@@ -1940,6 +2044,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 5dbf3c0e36fc8a44ca6175a84d35a770, type: 3}
       propertyPath: m_Name
       value: columna (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5dbf3c0e36fc8a44ca6175a84d35a770, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5dbf3c0e36fc8a44ca6175a84d35a770, type: 3}
