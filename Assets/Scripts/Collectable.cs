@@ -6,17 +6,24 @@ using UnityEngine.UI;
 public class Collectable : MonoBehaviour
 {
     public GameObject img;
+    public GameObject text;
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))
+        if (other.gameObject.CompareTag("Player"))
         {
+            text.SetActive(true);
+            
+            if (Input.GetKeyDown(KeyCode.E))
+            {
             img.SetActive(true);
+            text.SetActive(false);
             gameObject.SetActive(false);
+            }
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (Input.GetKeyDown(KeyCode.C))
         {

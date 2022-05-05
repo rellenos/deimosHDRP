@@ -61,6 +61,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         currentHealth = maxHealth;
+        ammoDisplay.text = (7 - bulletscount) + " / 7";
     }
     
     private void Awake()
@@ -137,16 +138,14 @@ public class PlayerController : MonoBehaviour
             playerVelocity.y = 0f;
         }
 
-        if (Global.groundedPlayer)
+        /*if (Global.groundedPlayer)
         {
             animAlythea.SetBool("jump", false);
         }
         else
         {
             animAlythea.SetBool("jump", true);
-        }
-
-
+        }*/
 
         Vector2 input = moveAction.ReadValue<Vector2>();
         Vector3 move = new Vector3(input.x, 0, input.y);

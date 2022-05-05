@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
 public class SwitchCharacter : MonoBehaviour
@@ -9,6 +10,8 @@ public class SwitchCharacter : MonoBehaviour
     [Header("Player")]
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] public GameObject character1, character2, ScrpPick;
+    public GameObject alytheaIMG;
+    public GameObject irIMG;
 
     [Header("Animator")]
     [SerializeField] Animator animAlythea;
@@ -70,6 +73,8 @@ public class SwitchCharacter : MonoBehaviour
                     character2.gameObject.SetActive(true);
                     //animAlythea.Rebind();
                     //animIR.Rebind();
+                    alytheaIMG.SetActive(false);
+                    irIMG.SetActive(true);  
                     gameObject.transform.position = originalPos;
                     break;
 
@@ -84,6 +89,8 @@ public class SwitchCharacter : MonoBehaviour
                     character1.gameObject.SetActive(true);
                     character2.gameObject.SetActive(false);
                     gameObject.transform.position = originalPos;
+                    alytheaIMG.SetActive(true);
+                    irIMG.SetActive(false);  
                     //animAlythea.Rebind();
                     //animIR.Rebind();
                     break;
