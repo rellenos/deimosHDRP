@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public Animator animAlythea;
     [SerializeField] public Animator animIR;
     [SerializeField] private PlayerInput playerInput;
-    [SerializeField] GameObject GroundChecker;
+    [SerializeField] GameObject jetpackParticles;
 
     [Header("Gun")]
     [SerializeField] GameObject bulletPrefab;
@@ -52,18 +52,16 @@ public class PlayerController : MonoBehaviour
     private InputAction jumpAction;
     private InputAction shootAction;
     private InputAction changeAction;
-    private InputAction realoadActio;
+    private InputAction realoadAction;
 
-    private int bulletscount;
+    private int bulletsCount;
+    private int ammo;
 
     int layerMask;
-    
-
-    //public bool isDead;
 
     private void Start()
     {
-        ammoDisplay.text = (7 - bulletscount) + " / 7";
+        ammoDisplay.text = bulletsCount + " / 7";
 
         layerMask = 1 << 11;
         layerMask = ~layerMask;
@@ -85,12 +83,10 @@ public class PlayerController : MonoBehaviour
         jumpAction = playerInput.actions["Jump"];
         shootAction = playerInput.actions["Shoot"];
         changeAction = playerInput.actions["Change"];
-        realoadActio = playerInput.actions["Reload"];
+        realoadAction = playerInput.actions["Reload"];
 
-        bulletscount = 0;
+        bulletsCount = 7;
         Global.reloading = false;
-
-        //animAlythea.SetBool("jump", false);
 
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -98,15 +94,15 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         shootAction.performed += _ => ShootGun();
-        jumpAction.performed += _ => JumpUp();
-        realoadActio.performed += _ => Reload();
+        //jumpAction.performed += _ => JumpUp();
+        realoadAction.performed += _ => Reload();
     }
 
     private void OnDisable()
     {
         shootAction.performed -= _ => ShootGun();
-        jumpAction.performed -= _ => JumpUp();
-        realoadActio.performed -= _ => Reload();
+        //jumpAction.performed -= _ => JumpUp();
+        realoadAction.performed -= _ => Reload();
     }
 
     private void ShootGun()
@@ -127,13 +123,15 @@ public class PlayerController : MonoBehaviour
                 bulletController.target = cameraTransform.position + cameraTransform.forward * bulletHitMissDistance;
                 bulletController.hit = false;
             }
-            bulletscount ++;
-            ammoDisplay.text = bulletscount + " / 7";
-            //Debug.Log(bulletscount);
-            if (bulletscount == 7){
+
+            bulletsCount --;
+
+            if (bulletsCount <= 0){
                 Global.reloading = true;
                 StartCoroutine(ReloadWait());
             }
+
+            ammoDisplay.text = bulletsCount + " / 7";
         }
     }
 
@@ -145,22 +143,16 @@ public class PlayerController : MonoBehaviour
             playerVelocity.y = 0f;
         }
 
-        /* if (Global.groundedPlayer)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            animAlythea.SetBool("jump", false);
-        }
-        else
-        {
-            animAlythea.SetBool("jump", true);
-        }*/
+            JumpUp();
+        } 
 
         Vector2 input = moveAction.ReadValue<Vector2>();
         Vector3 move = new Vector3(input.x, 0, input.y);
         move = move.x * cameraTransform.right.normalized + move.z * cameraTransform.forward.normalized;
         move.y = 0;
         controller.Move(move * Time.deltaTime * playerSpeed);
-
-        //controller.Jump(animAlythea.SetBool("jump", true));
 
         playerVelocity.y += gravityValue * Time.deltaTime;       
         controller.Move(playerVelocity * Time.deltaTime);
@@ -177,7 +169,6 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
 
-
         if (Global.totalJump == 2)
         {
             Global.totalJump = 0;
@@ -187,29 +178,16 @@ public class PlayerController : MonoBehaviour
             Global.totalJump = 0;
         }
 
-        /* if (inGround)
-        {
-            Debug.Log("en el suelo");
-            animAlythea.SetBool("jump", false);
-        }
-        else
-        {
-            Debug.Log("Volando");
-            animAlythea.SetBool("jump", true);
-        }*/
-
-        
+        //ground checker
         RaycastHit hit;
-        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * 1, Color.yellow);
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, 1, layerMask))
+        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * 1.3f, Color.red);
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, 1.3f, layerMask))
         {
-            Debug.Log("en el suelo");
             animAlythea.SetBool("jump", false);
             inGround = true;
         }
         else
         {
-            Debug.Log("Volando");
             animAlythea.SetBool("jump", true);
             inGround = false;
         }
@@ -226,22 +204,18 @@ public class PlayerController : MonoBehaviour
     {
         if (Global.totalJump == 1)
         {
+            GameObject particles = (GameObject)Instantiate(jetpackParticles, transform.position, transform.rotation);
+            Destroy(particles, 2f);
             playerVelocity.y = 0;
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
             Global.totalJump++;
         }
-    
-
+        
         if (Global.groundedPlayer == true && Global.totalJump == 0)
         {
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
             Global.totalJump++;
-            //animAlythea.SetBool("jump", true);
         }
-        //else
-        //{
-            //animAlythea.SetBool("jump", false);
-        //}
     }
 
     IEnumerator ReloadWait()
@@ -250,7 +224,7 @@ public class PlayerController : MonoBehaviour
         //Debug.Log("PreReaload");
         yield return new WaitForSeconds(3);
         //Debug.Log("PosReaload");
-        bulletscount = 0;
+        bulletsCount = 7;
         Global.reloading = false;
     }
 
@@ -271,23 +245,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    /*void OnTriggerStay(Collider GroundChecker)
-    {
-        if (GroundChecker.gameObject.CompareTag("Wall"))
-        {
-            animAlythea.SetBool("jump", false);
-        }
-        else
-        {
-            animAlythea.SetBool("jump", true);
-        }
-    }*/
-
     void Death()
     {
-        //Destroy(Player1);
-        //Destroy(Player2);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        //gameOver.gameObject.SetActive(true);
     }
 }

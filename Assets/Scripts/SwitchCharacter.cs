@@ -23,29 +23,28 @@ public class SwitchCharacter : MonoBehaviour
 
     private void Awake()
     {
-
         changeAction = playerInput.actions["Change"];
         animAlythea = GameObject.Find("Alythea").GetComponent<Animator>();
         animIR = GameObject.Find("IR_67").GetComponent<Animator>();
-
     }
 
     private void OnEnable()
     {
-
-        changeAction.performed += _ => ChangeCharacter();
-
+        //changeAction.performed += _ => ChangeCharacter();
     }
-
 
     private void OnDisable()
     {
-        changeAction.performed -= _ => ChangeCharacter();
+        //changeAction.performed -= _ => ChangeCharacter();
     }
 
     void Update()
     {
         originalPos = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            ChangeCharacter();
+        } 
     }
 
 
@@ -78,7 +77,7 @@ public class SwitchCharacter : MonoBehaviour
 
                 case 2:
                     Global.witchAvatarIsOn = 1;
-                    
+
                     //DROP OBJECT POSSIBLE CANVIAR A FUNCIO EN EL PICKUPOBEJC
                     //pickUpObj();
 
