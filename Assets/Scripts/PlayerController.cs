@@ -38,11 +38,11 @@ public class PlayerController : MonoBehaviour
     [Header("UI")]
     public TextMeshProUGUI ammoDisplay;
     public Image healthBar;
-    public GameObject gameOver;
+    //public GameObject gameOver;
 
     [Header("Interaction")]
     [SerializeField] public bool jump;
-    [SerializeField] bool saltfunciona = false;
+    [SerializeField] public bool inGround;
 
     private float x, y;
     private Vector3 playerVelocity;
@@ -56,16 +56,23 @@ public class PlayerController : MonoBehaviour
 
     private int bulletscount;
 
+    int layerMask;
+    
+
     //public bool isDead;
 
     private void Start()
     {
-        currentHealth = maxHealth;
         ammoDisplay.text = (7 - bulletscount) + " / 7";
+
+        layerMask = 1 << 11;
+        layerMask = ~layerMask;
     }
     
     private void Awake()
     {
+        currentHealth = maxHealth;
+
         controller = GetComponent<CharacterController>();
         playerInput = GetComponent<PlayerInput>();
 
@@ -83,7 +90,7 @@ public class PlayerController : MonoBehaviour
         bulletscount = 0;
         Global.reloading = false;
 
-        animAlythea.SetBool("jump", false);
+        //animAlythea.SetBool("jump", false);
 
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -138,7 +145,7 @@ public class PlayerController : MonoBehaviour
             playerVelocity.y = 0f;
         }
 
-        /*if (Global.groundedPlayer)
+        /* if (Global.groundedPlayer)
         {
             animAlythea.SetBool("jump", false);
         }
@@ -178,6 +185,33 @@ public class PlayerController : MonoBehaviour
         if (Global.totalJump <= 2 && Global.witchAvatarIsOn == 2)
         {
             Global.totalJump = 0;
+        }
+
+        /* if (inGround)
+        {
+            Debug.Log("en el suelo");
+            animAlythea.SetBool("jump", false);
+        }
+        else
+        {
+            Debug.Log("Volando");
+            animAlythea.SetBool("jump", true);
+        }*/
+
+        
+        RaycastHit hit;
+        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * 1, Color.yellow);
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, 1, layerMask))
+        {
+            Debug.Log("en el suelo");
+            animAlythea.SetBool("jump", false);
+            inGround = true;
+        }
+        else
+        {
+            Debug.Log("Volando");
+            animAlythea.SetBool("jump", true);
+            inGround = false;
         }
 
         healthBar.fillAmount = currentHealth / maxHealth;

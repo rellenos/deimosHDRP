@@ -12,7 +12,7 @@ public class Redentor : MonoBehaviour
    public float currentHealth;
    public float timeRemaining = 2;
    public float damage = 10;
-   public float destroyDelay = 7;
+   public float destroyDelay = 3.5f;
 
    public bool attacking;
    public bool isDead;
