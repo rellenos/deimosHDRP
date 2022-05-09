@@ -6,22 +6,23 @@ public class FireBullet : MonoBehaviour
 {
 
     [SerializeField]
-    private GameObject _bullet;
+    private GameObject bullet;
     [SerializeField]
-    private float _timer = 2f;
+    private float timer = 2f;
     private float timerCount = 20;
 
+    private int counter;
     [SerializeField]
-    private int _counter;
-    private int _maxCounter = 20;
+    private int maxCounter = 20;
 
-    // Start is called before the first frame update
+    public GameObject target;
+
     void Start()
     {
-        StartCoroutine(FireBullets_CR());   
+        //StartCoroutine(FireBullets_CR());   
+        target = GameObject.Find("Player");
     }
 
-    // Update is called once per frame
     void Update()
     {/*
         timerCount += Time.deltaTime;
@@ -32,17 +33,21 @@ public class FireBullet : MonoBehaviour
             timerCount = 0f;
         }
      */
+
+        if (Vector3.Distance(transform.position, target.transform.position) < 30)
+        {
+            //StartCoroutine(FireBullets_CR());
+            Instantiate(bullet, transform.position, transform.rotation);
+        }
     }
 
     IEnumerator FireBullets_CR()
     {
-        Debug.Log("Inicio Coroutine");
-        for(int i=0; i<_maxCounter; i++)
+        for(int i=0; i<maxCounter; i++)
         {
-            _counter++;
-            Instantiate(_bullet, transform.position, transform.rotation);
-            yield return new WaitForSeconds(_timer);
+            counter++;
+            Instantiate(bullet, transform.position, transform.rotation);
+            yield return new WaitForSeconds(timer);
         }
-        Debug.Log("Fin coroutine");
     }
 }
