@@ -4,41 +4,31 @@ using UnityEngine;
 
 public class FireBullet : MonoBehaviour
 {
+    [SerializeField] private GameObject bullet;
+    [SerializeField] public GameObject target;
 
-    [SerializeField]
-    private GameObject bullet;
-    [SerializeField]
-    private float timer = 2f;
-    private float timerCount = 20;
+    [SerializeField] private float timer = 0.5f;
 
-    private int counter;
-    [SerializeField]
-    private int maxCounter = 20;
+    [SerializeField] private int counter;
+    [SerializeField] private int maxCounter = 200;
 
-    public GameObject target;
+    Transform Player;
+    public Transform head;
 
     void Start()
-    {
-        //StartCoroutine(FireBullets_CR());   
+    {   
         target = GameObject.Find("Player");
+        if (Vector3.Distance(transform.position, target.transform.position) < 30)
+        {
+            head.LookAt(Player);
+            StartCoroutine(FireBullets_CR());
+            return;
+        }
     }
 
     void Update()
-    {/*
-        timerCount += Time.deltaTime;
-
-        if(timeCount>timer)
-        {
-            Instantiate(bullet, transform.position, transform.rotation);
-            timerCount = 0f;
-        }
-     */
-
-        if (Vector3.Distance(transform.position, target.transform.position) < 30)
-        {
-            //StartCoroutine(FireBullets_CR());
-            Instantiate(bullet, transform.position, transform.rotation);
-        }
+    {
+        
     }
 
     IEnumerator FireBullets_CR()

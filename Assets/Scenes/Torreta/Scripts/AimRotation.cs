@@ -5,7 +5,7 @@ using UnityEngine;
 public class AimRotation : MonoBehaviour
 {
     [SerializeField]
-    private Transform _target;
+    public Transform _target;
     public GameObject target;
 
     void Start()
@@ -18,9 +18,9 @@ public class AimRotation : MonoBehaviour
         if (Vector3.Distance(transform.position, target.transform.position) < 30)
         {
             Vector3 targetOrientation = _target.position - transform.position;
-            Debug.DrawRay(transform.position, targetOrientation, Color.green);
             Quaternion targetOrientationQuaternion = Quaternion.LookRotation(targetOrientation);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetOrientationQuaternion, Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetOrientationQuaternion, Time.deltaTime * 8);
+            Debug.DrawRay(transform.position, targetOrientation, Color.green);
         }
     }
 }

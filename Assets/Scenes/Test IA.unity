@@ -389,7 +389,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &284513741
 GameObject:
@@ -1323,7 +1323,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!114 &1165942139
 MonoBehaviour:
@@ -2299,7 +2299,7 @@ Transform:
   m_LocalScale: {x: 12.410553, y: 12.410553, z: 12.410553}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1584156515
 GameObject:
@@ -2412,7 +2412,7 @@ RectTransform:
   - {fileID: 664363375}
   - {fileID: 26747922}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3515,7 +3515,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 112045034618250398, guid: e1bc7ac1c9a34fc4db2c1e28133a860a, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 112045034618250398, guid: e1bc7ac1c9a34fc4db2c1e28133a860a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3827,7 +3827,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!81 &5032035328414996078
 AudioListener:
@@ -3949,7 +3949,7 @@ PrefabInstance:
       objectReference: {fileID: 5455431318673685775}
     - target: {fileID: 4544117743291652795, guid: 3fcfcfa3a5290024789320a0f462e424, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4544117743291652795, guid: 3fcfcfa3a5290024789320a0f462e424, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4142,7 +4142,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4654279455416592146, guid: f0cdd55d0d537244686907eaabfee94b, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4654279455416592146, guid: f0cdd55d0d537244686907eaabfee94b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4569,22 +4569,24 @@ MonoBehaviour:
   jumpHeight: 1
   gravityValue: -9.81
   rotationSpeed: 9
+  maxHealth: 100
+  currentHealth: 0
+  damage: 10
+  controller: {fileID: 5455431318673685773}
+  Player1: {fileID: 79487346}
+  Player2: {fileID: 1098985083}
+  animAlythea: {fileID: 5432290092513841461}
+  animIR: {fileID: 5032035327173015030}
+  playerInput: {fileID: 5455431318673685770}
+  jetpackParticles: {fileID: 6743240555978972019, guid: 353724085349b2e45a8110a8fe7bef2e, type: 3}
   bulletPrefab: {fileID: 8614099827936626386, guid: df68fc46713dabe4893a46392fb0bbcc, type: 3}
   barrelTransform: {fileID: 5455431318223786233}
   bulletParent: {fileID: 5455431317968243355}
   bulletHitMissDistance: 25
-  Player1: {fileID: 79487346}
-  Player2: {fileID: 1098985083}
-  gameOver: {fileID: 0}
-  saltfunciona: 0
-  animAlythea: {fileID: 5432290092513841461}
-  animIR: {fileID: 5032035327173015030}
   ammoDisplay: {fileID: 811015036}
   healthBar: {fileID: 1965185618}
-  maxHealth: 100
-  currentHealth: 0
-  damage: 10
   jump: 0
+  inGround: 0
 --- !u!114 &5455431318673685761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4601,6 +4603,8 @@ MonoBehaviour:
   character1: {fileID: 79487346}
   character2: {fileID: 1098985083}
   ScrpPick: {fileID: 1098985083}
+  alytheaIMG: {fileID: 1331769207}
+  irIMG: {fileID: 318790914}
   animAlythea: {fileID: 5432290092513841461}
   animIR: {fileID: 5032035327173015030}
 --- !u!114 &5455431318673685770
