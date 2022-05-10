@@ -22,5 +22,7 @@ public class AimRotation : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, targetOrientationQuaternion, Time.deltaTime * 8);
             Debug.DrawRay(transform.position, targetOrientation, Color.green);
         }
+
+        transform.rotation.x = 0;
     }
 }
