@@ -16,9 +16,9 @@ public class Collectable : MonoBehaviour
             
             if (Input.GetKeyDown(KeyCode.E))
             {
-            img.SetActive(true);
-            text.SetActive(false);
-            gameObject.SetActive(false);
+                img.SetActive(true);
+                text.SetActive(false);
+                gameObject.SetActive(false);
             }
         }
     }

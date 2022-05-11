@@ -45,13 +45,10 @@ public class GrapplingHook : MonoBehaviour
         grappleAction.performed += _ => ShootHook();
     }
 
-
     private void OnDisable()
     {
         grappleAction.performed -= _ => ShootHook();
     }
-
-
 
     private void Start()
     {

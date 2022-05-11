@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.AI;
 using UnityEngine.UI;
-using TMPro;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 [RequireComponent(typeof(CharacterController), typeof(PlayerInput))]
 public class PlayerController : MonoBehaviour
@@ -172,7 +172,7 @@ public class PlayerController : MonoBehaviour
         if (Global.totalJump == 2)
         {
             Global.totalJump = 0;
-            Debug.Log("Tocando suelo");
+            //Debug.Log("Tocando suelo");
         }
         if (Global.totalJump <= 2 && Global.witchAvatarIsOn == 2)
         {
@@ -205,7 +205,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Global.totalJump == 1)
         {
-            Debug.Log("JEtpack");
+            //Debug.Log("Jetpack");
             GameObject particles = (GameObject)Instantiate(jetpackParticles, transform.position, transform.rotation);
             Destroy(particles, 2f);
             playerVelocity.y = 0;
@@ -215,7 +215,6 @@ public class PlayerController : MonoBehaviour
         
         if (Global.groundedPlayer == true && Global.totalJump == 0)
         {
-            
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
             Global.totalJump++;
         }
@@ -240,6 +239,20 @@ public class PlayerController : MonoBehaviour
         {
             currentHealth = currentHealth - damage;
             //Debug.Log ("hit");
+
+            if(currentHealth <= 0)
+            {
+                Death();
+            }
+        }
+    }
+
+    private void OnCollisionEnter(Collision other)    
+    {
+        if (other.gameObject.CompareTag("BulletEnemy"))
+        {
+            currentHealth = currentHealth - damage;
+            //Debug.Log ("muerte");
 
             if(currentHealth <= 0)
             {
