@@ -452,7 +452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7853d4bded856e14fa85b327d1c7fa08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitExplosion: {fileID: 6743240555978972019, guid: 353724085349b2e45a8110a8fe7bef2e, type: 3}
+  hitExplosion: {fileID: 4768108872024528816, guid: 9e408c1bd6b94f54d89a4ce8c09676f2, type: 3}
 --- !u!136 &4199411362702425210
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -185,11 +185,13 @@ public class PlayerController : MonoBehaviour
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, 1.3f, layerMask))
         {
             animAlythea.SetBool("jump", false);
+            animIR.SetBool("jump", false);
             inGround = true;
         }
         else
         {
             animAlythea.SetBool("jump", true);
+            animIR.SetBool("jump", true);
             inGround = false;
         }
 
