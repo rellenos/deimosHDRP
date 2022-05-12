@@ -6,18 +6,13 @@ using Cinemachine;
 
 public class SwitchVCam : MonoBehaviour
 {
-    [SerializeField]
-    private PlayerInput playerInput;
-    [SerializeField]
-    private int priorityBoostAmount = 10;
-    [SerializeField]
-    private Canvas thirdPersonCanvas;
-    [SerializeField]
-    private Canvas aimCanvas;
-    [SerializeField]
-    private GameObject grappling;
-    [SerializeField]
-    private GameObject Reload;
+    [SerializeField] private PlayerInput playerInput;
+    [SerializeField] private int priorityBoostAmount = 10;
+    [SerializeField] private Canvas thirdPersonCanvas;
+    [SerializeField] private Canvas aimCanvas;
+    [SerializeField] private GameObject grappling;
+    [SerializeField] private GameObject Reload;
+    [SerializeField] public Animator animAlythea;
 
     private CinemachineVirtualCamera virutalCamera;
     private InputAction aimAction;
@@ -25,6 +20,7 @@ public class SwitchVCam : MonoBehaviour
     private void Awake()
     {
         virutalCamera = GetComponent<CinemachineVirtualCamera>();
+        animAlythea = GameObject.Find("Alythea").GetComponent<Animator>();
         aimAction = playerInput.actions["Aim"];
     }
 
@@ -46,6 +42,8 @@ public class SwitchVCam : MonoBehaviour
         virutalCamera.Priority += priorityBoostAmount;
         aimCanvas.enabled = true;
         thirdPersonCanvas.enabled = false;
+
+        animAlythea.SetBool("runAim", true);
 
         if (Global.reloading != false)
         {
@@ -69,6 +67,8 @@ public class SwitchVCam : MonoBehaviour
         virutalCamera.Priority -= priorityBoostAmount;
         aimCanvas.enabled = false;
         thirdPersonCanvas.enabled = true;
+
+        animAlythea.SetBool("runAim", false);
 
         if (Global.witchAvatarIsOn == 2 && Global.ISaim == false && Global.ISgrappling == false)
         {
