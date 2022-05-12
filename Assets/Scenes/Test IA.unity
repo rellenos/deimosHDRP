@@ -800,6 +800,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1cd4444fc3688d4a9785d5bf07e0dc1, type: 3}
+--- !u!1 &1783401642 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4544117743291652793, guid: 3fcfcfa3a5290024789320a0f462e424, type: 3}
+  m_PrefabInstance: {fileID: 8340614308491970111}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1783401647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783401642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dda0e754a8508c4a995c89e91bf8810, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camTransform: {fileID: 0}
+  shakeDuration: 5
+  shakeAmount: 2
+  decreaseFactor: 1
 --- !u!1001 &2047705759
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2650,7 +2671,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &3043906114356316980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4280,7 +4301,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fpsDisplay: {fileID: 2412472320002592002}
-  objOptimizar: []
   targetFrameRate: 60
 --- !u!222 &7637712245086702976
 CanvasRenderer:
@@ -6638,6 +6658,7 @@ GameObject:
   - component: {fileID: 9009995258017894147}
   - component: {fileID: 9009995258017894146}
   - component: {fileID: 9009995258017894145}
+  - component: {fileID: 9009995258017894152}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: MainCamera
@@ -6688,6 +6709,22 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &9009995258017894152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9009995258017894150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dda0e754a8508c4a995c89e91bf8810, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camTransform: {fileID: 0}
+  shakeDuration: 3
+  shakeAmount: 5
+  decreaseFactor: 5
 --- !u!95 &9009995258119138459
 Animator:
   serializedVersion: 3

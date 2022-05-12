@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Checkpoints : MonoBehaviour
 {
-    public bool activated = false;
+    /*public bool activated = false;
     public static GameObject[] CheckPointsList;
     
     void Start()
@@ -48,5 +48,5 @@ public class Checkpoints : MonoBehaviour
         }
 
         return result;
-    }
+    }*/
 }
