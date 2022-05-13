@@ -52,12 +52,14 @@ public class PlayerController : MonoBehaviour
     private InputAction jumpAction;
     private InputAction shootAction;
     private InputAction changeAction;
-    private InputAction realoadAction;
+    private InputAction reloadAction;
 
     private int bulletsCount;
     private int ammo;
 
     int layerMask;
+
+    public Vector2 velocity;
 
     private void Start()
     {
@@ -83,7 +85,7 @@ public class PlayerController : MonoBehaviour
         jumpAction = playerInput.actions["Jump"];
         shootAction = playerInput.actions["Shoot"];
         changeAction = playerInput.actions["Change"];
-        realoadAction = playerInput.actions["Reload"];
+        reloadAction = playerInput.actions["Reload"];
 
         bulletsCount = 7;
         Global.reloading = false;
@@ -95,14 +97,14 @@ public class PlayerController : MonoBehaviour
     {
         shootAction.performed += _ => ShootGun();
         //jumpAction.performed += _ => JumpUp();
-        realoadAction.performed += _ => Reload();
+        reloadAction.performed += _ => Reload();
     }
 
     private void OnDisable()
     {
         shootAction.performed -= _ => ShootGun();
         //jumpAction.performed -= _ => JumpUp();
-        realoadAction.performed -= _ => Reload();
+        reloadAction.performed -= _ => Reload();
     }
 
     private void ShootGun()
@@ -148,6 +150,27 @@ public class PlayerController : MonoBehaviour
             JumpUp();
         } 
 
+        Movement();
+
+        GroundChecker();
+
+        AimAnimations();
+
+        if (Global.totalJump == 2)
+        {
+            Global.totalJump = 0;
+            //Debug.Log("Tocando suelo");
+        }
+        if (Global.totalJump <= 2 && Global.witchAvatarIsOn == 2)
+        {
+            Global.totalJump = 0;
+        }
+
+        healthBar.fillAmount = currentHealth / maxHealth;
+    }
+
+    public void Movement()
+    {
         Vector2 input = moveAction.ReadValue<Vector2>();
         Vector3 move = new Vector3(input.x, 0, input.y);
         move = move.x * cameraTransform.right.normalized + move.z * cameraTransform.forward.normalized;
@@ -164,41 +187,57 @@ public class PlayerController : MonoBehaviour
 
         //Rotacio camera direccio
         //comprobar que no hi ha input de moviment
-        if(input != Vector2.zero || Global.ISaim == true){
+        if(input != Vector2.zero || Global.ISaim == true)
+        {
             Quaternion targetRotation = Quaternion.Euler(0, cameraTransform.eulerAngles.y, 0);
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
+        
+        velocity = input;
 
-        if (Global.totalJump == 2)
+        if(input == Vector2.zero)
         {
-            Global.totalJump = 0;
-            //Debug.Log("Tocando suelo");
-        }
-        if (Global.totalJump <= 2 && Global.witchAvatarIsOn == 2)
-        {
-            Global.totalJump = 0;
-        }
-
-        //ground checker
-        RaycastHit hit;
-        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * 1.3f, Color.red);
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, 1.3f, layerMask))
-        {
-            animAlythea.SetBool("jump", false);
-            animIR.SetBool("jump", false);
-            inGround = true;
+            Global.moving = false;
         }
         else
         {
-            animAlythea.SetBool("jump", true);
-            animIR.SetBool("jump", true);
-            inGround = false;
+            Global.moving = true;
         }
-
-        healthBar.fillAmount = currentHealth / maxHealth;
+        
     }
 
-    public void Reload(){
+    public void AimAnimations()
+    {
+        if (Global.ISaim && !Global.moving)
+        {
+            animAlythea.SetBool("aim", true);
+            animAlythea.SetBool("runAim", false);
+
+        }
+        else if (Global.ISaim && Global.moving)
+        {
+            animAlythea.SetBool("runAim", true);
+            animAlythea.SetBool("aim", true);
+        }
+        else if(!Global.ISaim && !Global.moving)
+        {
+            animAlythea.SetBool("runAim", false);
+            animAlythea.SetBool("aim", false);
+        }
+        else if(Global.ISaim && !Global.moving)
+        {
+            animAlythea.SetBool("runAim", false);
+            animAlythea.SetBool("aim", true);
+        }
+        else if(!Global.ISaim && Global.moving)
+        {
+            animAlythea.SetBool("runAim", false);
+            animAlythea.SetBool("aim", false);
+        }
+    }
+    
+    public void Reload()
+    {
         Global.reloading = true;
         StartCoroutine(ReloadWait());
     }
@@ -222,14 +261,22 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    IEnumerator ReloadWait()
+    private void GroundChecker()
     {
-        Debug.Log("Reloading: " + Global.reloading);
-        //Debug.Log("PreReaload");
-        yield return new WaitForSeconds(3);
-        //Debug.Log("PosReaload");
-        bulletsCount = 7;
-        Global.reloading = false;
+        RaycastHit hit;
+        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * 1.3f, Color.red);
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, 1.3f, layerMask))
+        {
+            animAlythea.SetBool("jump", false);
+            animIR.SetBool("jump", false);
+            inGround = true;
+        }
+        else
+        {
+            animAlythea.SetBool("jump", true);
+            animIR.SetBool("jump", true);
+            inGround = false;
+        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -266,5 +313,15 @@ public class PlayerController : MonoBehaviour
     void Death()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    IEnumerator ReloadWait()
+    {
+        Debug.Log("Reloading: " + Global.reloading);
+        //Debug.Log("PreReaload");
+        yield return new WaitForSeconds(3);
+        //Debug.Log("PosReaload");
+        bulletsCount = 7;
+        Global.reloading = false;
     }
 }

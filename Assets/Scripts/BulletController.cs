@@ -7,8 +7,7 @@ public class BulletController : MonoBehaviour
     public GameObject hitExplosion;
    
     private float speed = 50f;
-    private float timeToDestroy = 3f;
-    int shootableMask;
+    private float timeToDestroy = 5f;
 
     public Vector3 target { get; set; }
     public bool hit { get; set; }
@@ -36,11 +35,8 @@ public class BulletController : MonoBehaviour
 
     void explode()
     {
-        //if (hitExplosion != null)
-        //{
-            GameObject explosion = (GameObject)Instantiate(hitExplosion, transform.position, transform.rotation);
-            Destroy(gameObject);
-            Destroy(explosion, 1f);
-        //}
+        GameObject explosion = (GameObject)Instantiate(hitExplosion, transform.position, transform.rotation);
+        Destroy(gameObject);
+        Destroy(explosion, 1f);
     }
 }

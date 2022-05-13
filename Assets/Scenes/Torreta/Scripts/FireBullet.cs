@@ -14,15 +14,27 @@ public class FireBullet : MonoBehaviour
 
     Transform Player;
 
+    public bool playerDetected = false;
+
     void Start()
     {   
         target = GameObject.Find("Player");
-        StartCoroutine(FireBullets_CR());
+        //StartCoroutine(FireBullets_CR());
     }
 
     void Update()
     {
-        
+
+        if(Vector3.Distance(transform.position, target.transform.position) < 25 && !playerDetected)
+        {
+            playerDetected = true;
+            StartCoroutine(FireBullets_CR());
+        }
+        else if(Vector3.Distance(transform.position, target.transform.position) > 25)
+        {
+            StopCoroutine(FireBullets_CR());
+            playerDetected = false;
+        }
     }
 
     void OnTriggerEnterCollider(Collider other)
@@ -42,7 +54,7 @@ public class FireBullet : MonoBehaviour
 
     IEnumerator FireBullets_CR()
     {
-        for(int i=0; i<maxCounter; i++)
+        for(int i=0; i<maxCounter && playerDetected; i++)
         {
             counter++;
             Instantiate(bullet, transform.position, transform.rotation);

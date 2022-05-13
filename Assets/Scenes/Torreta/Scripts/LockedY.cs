@@ -14,6 +14,7 @@ public class LockedY : MonoBehaviour
     void Start()
     {
         target = GameObject.Find("Player");
+        _target = GameObject.Find("Player").transform;
         t = transform;
     }
     

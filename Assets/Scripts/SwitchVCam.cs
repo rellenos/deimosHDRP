@@ -43,7 +43,7 @@ public class SwitchVCam : MonoBehaviour
         aimCanvas.enabled = true;
         thirdPersonCanvas.enabled = false;
 
-        animAlythea.SetBool("runAim", true);
+        //animAlythea.SetBool("aim", true);
 
         if (Global.reloading != false)
         {
@@ -68,7 +68,7 @@ public class SwitchVCam : MonoBehaviour
         aimCanvas.enabled = false;
         thirdPersonCanvas.enabled = true;
 
-        animAlythea.SetBool("runAim", false);
+        //animAlythea.SetBool("aim", false);
 
         if (Global.witchAvatarIsOn == 2 && Global.ISaim == false && Global.ISgrappling == false)
         {

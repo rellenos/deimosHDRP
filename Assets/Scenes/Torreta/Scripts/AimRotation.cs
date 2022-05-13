@@ -11,6 +11,7 @@ public class AimRotation : MonoBehaviour
     void Start()
     {
         target = GameObject.Find("Player");
+        _target = GameObject.Find("Player").transform;
     }
     
     void Update()
