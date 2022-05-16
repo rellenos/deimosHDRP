@@ -9,14 +9,12 @@ public class PickUpObject : MonoBehaviour
     public Transform interactionZone;
 
     [SerializeField] private PlayerInput playerInput;
-    [SerializeField] public Animator animIR;
 
     private InputAction grabAction;
 
     private void Awake()
     {
         grabAction = playerInput.actions["Grab"];
-        animIR = GameObject.Find("IR_67").GetComponent<Animator>();
     }
 
     private void OnEnable()

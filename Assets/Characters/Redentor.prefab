@@ -559,7 +559,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   timeRemaining: 2
-  damage: 15
+  damage: 7
   destroyDelay: 2.2
   attacking: 0
   isDead: 0

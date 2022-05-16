@@ -19,15 +19,15 @@ public class UIManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            Debug.Log("Pause");
+            //Debug.Log("Pause");
             pausePanel.SetActive(true);
             Time.timeScale = 0;
             pauseActive = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.P) && pauseActive)
+        if (Input.GetKeyDown(KeyCode.Escape) && pauseActive)
         {
-            Debug.Log("Play");
+            //Debug.Log("Play");
             pausePanel.SetActive(false);
             Time.timeScale = 1;
             pauseActive = false;

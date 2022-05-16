@@ -11,7 +11,7 @@ public class Redentor : MonoBehaviour
    public float maxHealth = 100;
    public float currentHealth;
    public float timeRemaining = 2;
-   public float damage = 10;
+   public float damage = 7;
    public float destroyDelay = 2.2f;
 
    public bool attacking;
@@ -73,7 +73,7 @@ public class Redentor : MonoBehaviour
                 ani.SetBool("walk", false);
 
                 ani.SetBool("run", true);
-                transform.Translate(Vector3.forward * -4 * Time.deltaTime);
+                transform.Translate(Vector3.forward * -6 * Time.deltaTime);
 
                 ani.SetBool("attack", false);
            }

@@ -126,6 +126,8 @@ public class PlayerController : MonoBehaviour
 
         AimAnimations();
 
+        GrapplingAnimations();
+
         PickAnimations();
 
         if (Global.totalJump == 2)
@@ -181,8 +183,8 @@ public class PlayerController : MonoBehaviour
     {
         if (Global.ISaim && !Global.moving)
         {
-            animAlythea.SetBool("aim", true);
             animAlythea.SetBool("runAim", false);
+            animAlythea.SetBool("aim", true);
         }
         else if (Global.ISaim && Global.moving)
         {
@@ -206,22 +208,63 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void GrapplingAnimations()
+    {
+        if (Global.ISaim && !Global.moving)
+        {
+            animIR.SetBool("runGrap", false);
+            animIR.SetBool("aimGrap", true);
+        }
+        else if (Global.ISaim && Global.moving)
+        {
+            animIR.SetBool("runGrap", true);
+            animIR.SetBool("aimGrap", true);
+        }
+        else if(!Global.ISaim && !Global.moving)
+        {
+            animIR.SetBool("runGrap", false);
+            animIR.SetBool("aimGrap", false);
+        }
+        else if(Global.ISaim && !Global.moving)
+        {
+            animIR.SetBool("runGrap", false);
+            animIR.SetBool("aimGrap", true);
+        }
+        else if(!Global.ISaim && Global.moving)
+        {
+            animIR.SetBool("runGrap", false);
+            animIR.SetBool("aimGrap", false);
+        }
+    }
+
     public void PickAnimations()
     {
-        if (Global.ISpicking && Global.moving)
+        if (Global.ISpicking && !Global.moving)
+        {
+            animIR.SetBool("pick", true);
+            //animIR.SetBool("pickRun", false);
+            //animIR.SetBool("pickIdle", true);
+        }
+        else if (Global.ISpicking && Global.moving)
         {
             animIR.SetBool("pickRun", true);
-            animIR.SetBool("pickIdle", true);
+            animIR.SetBool("pickIdle", false);
         }
         else if (Global.ISpicking && !Global.moving)
         {
-            animIR.SetBool("pickRun", false);
             animIR.SetBool("pickIdle", true);
+            animIR.SetBool("pickRun", false);
         }
         else if (!Global.ISpicking && !Global.moving)
         {
             animIR.SetBool("pickRun", false);
-            animIR.SetBool("pickIdle", false);
+            animIR.SetBool("pick", false);
+            //animIR.SetBool("pickIdle", true);
+        }
+        else if (!Global.ISpicking && Global.moving)
+        {
+            //animIR.SetBool("pickRun", false);
+            //animIR.SetBool("pickIdle", false);
         }
     }
 
