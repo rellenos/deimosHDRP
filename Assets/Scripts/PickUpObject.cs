@@ -22,7 +22,6 @@ public class PickUpObject : MonoBehaviour
     private void OnEnable()
     {
         grabAction.performed += _ => StartGrab();
-        
     }
 
     private void OnDisable()
@@ -39,8 +38,7 @@ public class PickUpObject : MonoBehaviour
     {
         if (ObjectToPickUp != null && ObjectToPickUp.GetComponent<PickableObject>().isPickable == true && Global.PickedObject == null)
         {
-            //Debug.Log("pick");
-            animIR.SetBool("pick", true);
+            Global.ISpicking = true;
             Global.PickedObject = ObjectToPickUp;
             Global.PickedObject.GetComponent<PickableObject>().isPickable = false;
             Global.PickedObject.transform.SetParent(interactionZone);
@@ -51,7 +49,7 @@ public class PickUpObject : MonoBehaviour
 
         else if (Global.PickedObject != null)
         {
-            animIR.SetBool("pick", false);
+            Global.ISpicking = false;
             Global.PickedObject.GetComponent<PickableObject>().isPickable = true;
             Global.PickedObject.transform.SetParent(null);
             Global.PickedObject.GetComponent<Rigidbody>().useGravity = true;

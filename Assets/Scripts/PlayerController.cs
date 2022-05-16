@@ -107,36 +107,6 @@ public class PlayerController : MonoBehaviour
         reloadAction.performed -= _ => Reload();
     }
 
-    private void ShootGun()
-    {
-        if (Global.ISaim == true && Global.witchAvatarIsOn == 1 && Global.reloading == false)
-        {
-            RaycastHit hit;
-            GameObject bullet = GameObject.Instantiate(bulletPrefab, barrelTransform.position, Quaternion.identity, bulletParent);
-            BulletController bulletController = bullet.GetComponent<BulletController>();
-                      
-            if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, Mathf.Infinity))
-            {
-                bulletController.target = hit.point;
-                bulletController.hit = true;
-            }
-            else
-            {
-                bulletController.target = cameraTransform.position + cameraTransform.forward * bulletHitMissDistance;
-                bulletController.hit = false;
-            }
-
-            bulletsCount --;
-
-            if (bulletsCount <= 0){
-                Global.reloading = true;
-                StartCoroutine(ReloadWait());
-            }
-
-            ammoDisplay.text = bulletsCount + " / 7";
-        }
-    }
-
     void Update()
     {
         Global.groundedPlayer = controller.isGrounded;
@@ -155,6 +125,8 @@ public class PlayerController : MonoBehaviour
         GroundChecker();
 
         AimAnimations();
+
+        PickAnimations();
 
         if (Global.totalJump == 2)
         {
@@ -203,7 +175,6 @@ public class PlayerController : MonoBehaviour
         {
             Global.moving = true;
         }
-        
     }
 
     public void AimAnimations()
@@ -212,7 +183,6 @@ public class PlayerController : MonoBehaviour
         {
             animAlythea.SetBool("aim", true);
             animAlythea.SetBool("runAim", false);
-
         }
         else if (Global.ISaim && Global.moving)
         {
@@ -233,6 +203,55 @@ public class PlayerController : MonoBehaviour
         {
             animAlythea.SetBool("runAim", false);
             animAlythea.SetBool("aim", false);
+        }
+    }
+
+    public void PickAnimations()
+    {
+        if (Global.ISpicking && Global.moving)
+        {
+            animIR.SetBool("pickRun", true);
+            animIR.SetBool("pickIdle", true);
+        }
+        else if (Global.ISpicking && !Global.moving)
+        {
+            animIR.SetBool("pickRun", false);
+            animIR.SetBool("pickIdle", true);
+        }
+        else if (!Global.ISpicking && !Global.moving)
+        {
+            animIR.SetBool("pickRun", false);
+            animIR.SetBool("pickIdle", false);
+        }
+    }
+
+    private void ShootGun()
+    {
+        if (Global.ISaim == true && Global.witchAvatarIsOn == 1 && Global.reloading == false)
+        {
+            RaycastHit hit;
+            GameObject bullet = GameObject.Instantiate(bulletPrefab, barrelTransform.position, Quaternion.identity, bulletParent);
+            BulletController bulletController = bullet.GetComponent<BulletController>();
+                      
+            if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, Mathf.Infinity))
+            {
+                bulletController.target = hit.point;
+                bulletController.hit = true;
+            }
+            else
+            {
+                bulletController.target = cameraTransform.position + cameraTransform.forward * bulletHitMissDistance;
+                bulletController.hit = false;
+            }
+
+            bulletsCount --;
+
+            if (bulletsCount <= 0){
+                Global.reloading = true;
+                StartCoroutine(ReloadWait());
+            }
+
+            ammoDisplay.text = bulletsCount + " / 7";
         }
     }
     
