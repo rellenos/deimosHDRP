@@ -9,8 +9,7 @@ public class Monolith : MonoBehaviour
     public Animator ani;
     public GameObject particlesDeco;
     public GameObject UI;
-    [SerializeField]
-    private PlayerInput playerInput;
+    [SerializeField] private PlayerInput playerInput;
 
     void Start()
     {
@@ -29,6 +28,7 @@ public class Monolith : MonoBehaviour
                 //Debug.Log ("activado");
                 ani.SetBool("activated", true);
                 particlesDeco.SetActive(true);
+                Destroy(UI);
             } 
         }
     }

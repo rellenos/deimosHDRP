@@ -17,20 +17,21 @@ public class UIManager : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.Escape) && !pauseActive)
         {
             //Debug.Log("Pause");
             pausePanel.SetActive(true);
             Time.timeScale = 0;
             pauseActive = true;
+            Cursor.lockState = CursorLockMode.Confined;
         }
-
-        if (Input.GetKeyDown(KeyCode.Escape) && pauseActive)
+        else if (Input.GetKeyDown(KeyCode.Escape) && pauseActive)
         {
             //Debug.Log("Play");
             pausePanel.SetActive(false);
             Time.timeScale = 1;
             pauseActive = false;
+            Cursor.lockState = CursorLockMode.Locked;
         }
         
     }

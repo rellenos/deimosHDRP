@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Options.unity
     guid: 0adcad32737070c489caec2755f9fb97
   - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: d40f4285a79c49543aab53830ff56fd0
+  - enabled: 1
     path: Assets/Scenes/Test puzzles.unity
     guid: 789129865fd9772498a54a8e01970d9a
   m_configObjects:
