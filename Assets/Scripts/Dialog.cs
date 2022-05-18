@@ -61,7 +61,6 @@ public class Dialog : MonoBehaviour
             else yield break;
         }
         yield return new WaitForSeconds(0.4f);
-        Debug.Log("Cerrar msorar");
         CloseDialog();
     }
 
@@ -76,7 +75,6 @@ public class Dialog : MonoBehaviour
         isDialogActive = false;
         if (auxCoroutine != null)
         {
-            Debug.Log("Stop");
             StopCoroutine(auxCoroutine);
             auxCoroutine = null;
         }
@@ -85,13 +83,13 @@ public class Dialog : MonoBehaviour
         panel.SetActive(false);
     }
 
-    private void Update()
+    /*private void Update()
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
             OpenBox(0);
         }
-    }
+    }*/
 
     public void OnTriggerEnter(Collider other)
     {
