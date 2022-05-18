@@ -13,19 +13,46 @@ public class UIManager : MonoBehaviour
     public GameObject ui;
 
     [Header("Bright")]
-    public Slider slider;
+    public Slider brightSlider;
     public float sliderValue;
     public Image panelBright;
 
+    [Header("Volume")]
+    public Slider musicSlider;
+    public float musicSliderValue;
+
+    public Slider soundSlider;
+    public float soundSliderValue;
+
+    [Header("Res")]
     bool pauseActive;
+    public Toggle toggle;
+    public TMP_Dropdown resDropdown;
+    Resolution[] resolutions;
 
-
+    [Header("Quality Settings")]
+    public TMP_Dropdown dropdown;
+    public int quality;
 
     void Start()
     {
         pauseActive = false;
-        slider.value = PlayerPrefabs.Getfloat("Brightness", 0.5f);
-        panelBright.color = new Color(panelBright.color.r, panelBright.color.g, panelBright.color.b, slider.value);
+        brightSlider.value = PlayerPrefs.GetFloat("Brightness", 0.5f);
+        panelBright.color = new Color(panelBright.color.r, panelBright.color.g, panelBright.color.b, brightSlider.value);
+
+        musicSlider.value = PlayerPrefs.GetFloat("BGMVolume", 0.5f);
+        AudioListener.volume = musicSlider.value;
+
+        soundSlider.value = PlayerPrefs.GetFloat("VFXVolume", 0.5f);
+        AudioListener.volume = soundSlider.value;
+
+        if (Screen.fullScreen) {toggle.isOn = true;}
+        else {toggle.isOn = false;}
+        CheckResolution();
+
+        quality = PlayerPrefs.GetInt("qualityLevel", 4);
+        dropdown.value = quality;
+        AdjustQuality();
     }
     
     void Update()
@@ -59,10 +86,64 @@ public class UIManager : MonoBehaviour
         optionsPanel.SetActive(false);
     }
 
-    public void ChangeSlider(float valor)
+    public void ChangeBrightnessSlider(float brightValor)
     {
-        sliderValur = valor;
-        PlayerPrefabs.SetFloat("Brightness", sliderValue);
-        panelBright.color = new Color(panelBright.color.r, panelBright.color.g, panelBright.color.b, slider.value);
+        sliderValue = brightValor;
+        PlayerPrefs.SetFloat("Brightness", sliderValue);
+        panelBright.color = new Color(panelBright.color.r, panelBright.color.g, panelBright.color.b, brightSlider.value);
+    }
+    
+    public void ChangeMusicSlider(float musicValor)
+    {
+        musicSliderValue = musicValor;
+        PlayerPrefs.SetFloat("BGMVolume", musicSliderValue);
+        AudioListener.volume = musicSlider.value;
+    }
+    
+    public void ChangeSoundSlider(float soundValor)
+    {
+        soundSliderValue = soundValor;
+        PlayerPrefs.SetFloat("VFXVolume", soundSliderValue);
+        AudioListener.volume = soundSlider.value;
+    }
+
+    public void SetFullscreen(bool fullScreen)
+    {
+        Screen.fullScreen = fullScreen;
+    }
+
+    public void AdjustQuality()
+    {
+        QualitySettings.SetQualityLevel(dropdown.value);
+        PlayerPrefs.SetInt("qualityLevel", dropdown.value);
+        quality = dropdown.value;
+    }
+
+    public void CheckResolution()
+    {
+        resolutions = Screen.resolutions;
+        resDropdown.ClearOptions();
+        List<string> options = new List<string>();
+        int actualRes = 0;
+
+        for (int i = 0; i < resolutions.Length; i++)
+        {
+            string option = resolutions[i].width + "x" + resolutions[i].height;
+            options.Add(option);
+
+            if (Screen.fullScreen && resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
+            {
+                actualRes = i;
+            }
+            resDropdown.AddOptions(options);
+            resDropdown.value = actualRes;
+            resDropdown.RefreshShownValue();
+        }
+    }
+
+    public void ChangeRes(int resIndex)
+    {
+        Resolution resolution = resolutions[resIndex];
+        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 }
