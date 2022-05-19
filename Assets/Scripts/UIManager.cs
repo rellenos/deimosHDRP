@@ -24,15 +24,17 @@ public class UIManager : MonoBehaviour
     public Slider soundSlider;
     public float soundSliderValue;
 
-    [Header("Res")]
+    [Header("Resolution")]
     bool pauseActive;
     public Toggle toggle;
     public TMP_Dropdown resDropdown;
-    Resolution[] resolutions;
+    
 
     [Header("Quality Settings")]
     public TMP_Dropdown dropdown;
     public int quality;
+
+    Resolution[] resolutions;
 
     void Start()
     {
@@ -50,7 +52,7 @@ public class UIManager : MonoBehaviour
         else {toggle.isOn = false;}
         CheckResolution();
 
-        quality = PlayerPrefs.GetInt("qualityLevel", 4);
+        quality = PlayerPrefs.GetInt("qualityLevel", 1);
         dropdown.value = quality;
         AdjustQuality();
     }

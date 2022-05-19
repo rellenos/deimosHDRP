@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float currentHealth;
     [SerializeField] float damage = 10;
     [SerializeField] CharacterController controller;
+    public static Vector3 lastCheckpointPos = new Vector3(146, 2, 135);
 
     [Header("Character")]
     [SerializeField] GameObject Player1;
@@ -91,6 +92,8 @@ public class PlayerController : MonoBehaviour
         Global.reloading = false;
 
         Cursor.lockState = CursorLockMode.Locked;
+
+        GameObject.FindGameObjectWithTag("Player").transform.position = lastCheckpointPos;
     }
 
     private void OnEnable()

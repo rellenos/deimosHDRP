@@ -26,6 +26,7 @@ public class Monolith : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 //Debug.Log ("activado");
+                PlayerController.lastCheckpointPos = transform.position;
                 ani.SetBool("activated", true);
                 particlesDeco.SetActive(true);
                 Destroy(UI);
