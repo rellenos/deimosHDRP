@@ -19,12 +19,22 @@ public class PickUpObject : MonoBehaviour
 
     private void OnEnable()
     {
-        grabAction.performed += _ => StartGrab();
+        //grabAction.performed += _ => StartGrab();
+      
     }
 
     private void OnDisable()
     {
-        grabAction.performed += _ => StartGrab();
+        //grabAction.performed += _ => StartGrab();
+      
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            StartGrab();
+        }
     }
 
     void StartGrab()

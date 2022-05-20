@@ -7,9 +7,12 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
+    
+    
     [Header("Pause")]
     public GameObject pausePanel;
     public GameObject optionsPanel;
+    public GameObject gameOverPanel;
     public GameObject ui;
 
     [Header("Bright")]
@@ -20,7 +23,6 @@ public class UIManager : MonoBehaviour
     [Header("Volume")]
     public Slider musicSlider;
     public float musicSliderValue;
-
     public Slider soundSlider;
     public float soundSliderValue;
 
@@ -28,7 +30,6 @@ public class UIManager : MonoBehaviour
     bool pauseActive;
     public Toggle toggle;
     public TMP_Dropdown resDropdown;
-    
 
     [Header("Quality Settings")]
     public TMP_Dropdown dropdown;
@@ -76,8 +77,21 @@ public class UIManager : MonoBehaviour
 
         if (pauseActive) {ui.SetActive(false);}
         else {ui.SetActive(true);}
+
+        if (Global.isDead)
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+            //Time.timeScale = 0;
+            gameOverPanel.SetActive(true);
+        }
     }
 
+    public void RestartGame()
+    {
+        //Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    
     public void OptionsPanelActive()
     {
         optionsPanel.SetActive(true);

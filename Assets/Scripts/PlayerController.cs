@@ -64,6 +64,8 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        Global.isDead = false;
+        
         ammoDisplay.text = bulletsCount + " / 7";
 
         layerMask = 1 << 11;
@@ -377,12 +379,13 @@ public class PlayerController : MonoBehaviour
 
     void Death()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Global.isDead = true;
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     IEnumerator ReloadWait()
     {
-        Debug.Log("Reloading: " + Global.reloading);
+        //Debug.Log("Reloading: " + Global.reloading);
         //Debug.Log("PreReaload");
         yield return new WaitForSeconds(3);
         //Debug.Log("PosReaload");

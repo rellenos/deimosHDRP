@@ -11,26 +11,16 @@ public class GrapplingHook : MonoBehaviour
     private InputAction grappleAction;
 
 
-    [SerializeField]
-    private LineRenderer lineRenderer;
-    [SerializeField]
-    private Transform grapplingHookEndPoint;
-    [SerializeField]
-    private CharacterController controllerChar;
-    [SerializeField]
-    private Transform grapplingHook;
-    [SerializeField]
-    private Transform handPos;
-    [SerializeField]
-    private Transform playerBody;
-    [SerializeField]
-    private LayerMask grappleLayer;
-    [SerializeField]
-    private float maxGrappleDistance;
-    [SerializeField]
-    private float hookSpeed;
-    [SerializeField]
-    private Vector3 offset;
+    [SerializeField] private LineRenderer lineRenderer;
+    [SerializeField] private Transform grapplingHookEndPoint;
+    [SerializeField] private CharacterController controllerChar;
+    [SerializeField] private Transform grapplingHook;
+    [SerializeField] private Transform handPos;
+    [SerializeField] private Transform playerBody;
+    [SerializeField] private LayerMask grappleLayer;
+    [SerializeField] private float maxGrappleDistance;
+    [SerializeField] private float hookSpeed;
+    [SerializeField] private Vector3 offset;
 
     private bool isShootingGrap;
     private Vector3 hookPoint;

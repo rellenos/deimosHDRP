@@ -5,6 +5,7 @@ using UnityEngine;
 public static class Global
 {
     public static bool ISaim;
+    public static bool isDead;
     public static bool moving;
     public static bool reloading;
     public static bool groundedPlayer;
