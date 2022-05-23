@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float currentHealth;
     [SerializeField] float damage = 10;
     [SerializeField] CharacterController controller;
-    public static Vector3 lastCheckpointPos = new Vector3(146, 2, 135);
+    public static Vector3 lastCheckpointPos = new Vector3(135, 34, 193);
 
     [Header("Character")]
     [SerializeField] GameObject Player1;

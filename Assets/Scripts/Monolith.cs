@@ -7,7 +7,8 @@ using UnityEngine.InputSystem;
 public class Monolith : MonoBehaviour
 {
     public Animator ani;
-    public GameObject particlesDeco;
+    public GameObject particlesCircle;
+    public GameObject particlesSplash;
     public GameObject UI;
     [SerializeField] private PlayerInput playerInput;
 
@@ -28,7 +29,8 @@ public class Monolith : MonoBehaviour
                 //Debug.Log ("activado");
                 PlayerController.lastCheckpointPos = transform.position;
                 ani.SetBool("activated", true);
-                particlesDeco.SetActive(true);
+                particlesCircle.SetActive(true);
+                particlesSplash.SetActive(true);
                 Destroy(UI);
             } 
         }
