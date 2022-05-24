@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float currentHealth;
     [SerializeField] float damage = 10;
     [SerializeField] CharacterController controller;
-    public static Vector3 lastCheckpointPos = new Vector3(135, 34, 193);
+    public static Vector3 lastCheckpointPos = new Vector3(146, 2, 135);
 
     [Header("Character")]
     [SerializeField] GameObject Player1;
@@ -39,6 +39,9 @@ public class PlayerController : MonoBehaviour
     [Header("UI")]
     public TextMeshProUGUI ammoDisplay;
     public Image healthBar;
+    public GameObject dialogueStart;
+    public GameObject dialogueLab;
+    public GameObject dialogueAntenna;
     //public GameObject gameOver;
 
     [Header("Interaction")]
@@ -360,6 +363,21 @@ public class PlayerController : MonoBehaviour
             {
                 Death();
             }
+        }
+
+        if (other.gameObject.CompareTag("DialogueStart"))
+        {
+            dialogueStart.SetActive(true);
+        }
+
+        if (other.gameObject.CompareTag("DialogueLab"))
+        {
+            dialogueLab.SetActive(true);
+        }
+
+        if (other.gameObject.CompareTag("DialogueAntenna"))
+        {
+            dialogueAntenna.SetActive(true);
         }
     }
 

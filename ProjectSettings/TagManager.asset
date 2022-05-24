@@ -19,6 +19,10 @@ TagManager:
   - Punch
   - BulletEnemy
   - Checkpoint
+  - Dialogue
+  - DialogueStart
+  - DialogueLab
+  - DialogueAntenna
   layers:
   - Default
   - TransparentFX

@@ -27,6 +27,7 @@ public class UIManager : MonoBehaviour
     public float soundSliderValue;
 
     [Header("Resolution")]
+    Resolution[] resolutions;
     bool pauseActive;
     public Toggle toggle;
     public TMP_Dropdown resDropdown;
@@ -35,7 +36,8 @@ public class UIManager : MonoBehaviour
     public TMP_Dropdown dropdown;
     public int quality;
 
-    Resolution[] resolutions;
+    [Header("Collectable")]
+    public GameObject collectable;
 
     void Start()
     {
@@ -161,5 +163,12 @@ public class UIManager : MonoBehaviour
     {
         Resolution resolution = resolutions[resIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+    }
+
+    public void HideCollectable()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        collectable.GetComponent<Animator>().SetInteger("State", 2);
+        Global.moving = true;
     }
 }

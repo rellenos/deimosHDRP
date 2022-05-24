@@ -7,6 +7,7 @@ public class Collectable : MonoBehaviour
 {
     public GameObject img;
     public GameObject text;
+    //public GameObject collectable;
 
     private void OnTriggerStay(Collider other)
     {
@@ -16,6 +17,7 @@ public class Collectable : MonoBehaviour
             
             if (Input.GetKeyDown(KeyCode.E))
             {
+                ShowCollectable();
                 img.SetActive(true);
                 text.SetActive(false);
                 gameObject.SetActive(false);
@@ -30,5 +32,12 @@ public class Collectable : MonoBehaviour
             Debug.Log("Cerrar");
             img.SetActive(false);
         } 
-    } 
+    }
+
+    public void ShowCollectable()
+    {
+        Cursor.lockState = CursorLockMode.Confined;
+        img.GetComponent<Animator>().SetInteger("State", 1);
+        Global.moving = false;
+    }
 }
