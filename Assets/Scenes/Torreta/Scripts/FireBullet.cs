@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FireBullet : MonoBehaviour
 {
-    [SerializeField] private GameObject bullet;
+    [SerializeField] private GameObject EnemyBullet;
     [SerializeField] public GameObject target;
 
     [SerializeField] private float timer = 0.33f;
@@ -12,9 +12,13 @@ public class FireBullet : MonoBehaviour
     [SerializeField] private int counter;
     [SerializeField] private int maxCounter = 200;
 
+    public PoolManager poolManager;
+    [SerializeField] Transform spawnPoint;
+
     Transform Player;
 
     public bool playerDetected = false;
+     public int bulletType;
 
     void Start()
     {   
@@ -57,7 +61,9 @@ public class FireBullet : MonoBehaviour
         for(int i=0; i<maxCounter && playerDetected; i++)
         {
             counter++;
-            Instantiate(bullet, transform.position, transform.rotation);
+            GameObject EnemyBullet = PoolManager.instance.GetPooledObject(bulletType);
+            EnemyBullet.transform.position = spawnPoint.position;
+            EnemyBullet.SetActive(true);
             yield return new WaitForSeconds(timer);
         }
     }

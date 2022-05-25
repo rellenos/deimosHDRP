@@ -4,46 +4,61 @@ using UnityEngine;
 
 public class TorretBullet : MonoBehaviour
 {
-    //public GameObject hitExplosion;
+    public GameObject hitExplosion;
     private GameObject bullet;
     private float speed = 50f;
     private float timeToDestroy = 1f;
-    
-    //public GameObject targetJugador;
-    //public Transform _target;
-    //public Vector3 target;
 
-    private Vector3 target;
+    public Vector3 target { get; set; }
+
+    public bool hit { get; set; }
 
     private void OnEnable()
     {
-        Destroy(gameObject, timeToDestroy);
+        StartCoroutine(LateCall(timeToDestroy));
     }
 
-    private void SetBullet(Vector3 target)
-    {
-        this.target = target;
-    }
+    //private void SetBullet(Vector3 target)
+    //{
+    //    this.target = target;
+    //}
 
     void Update()
     {
-        transform.Translate(Vector3.forward * Time.deltaTime * speed);
+        transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
+        if (!hit && Vector3.Distance(transform.position, target ) < .01f)
+        {
+            this.gameObject.SetActive(false);
+        }
         //transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
         //bullet.transform.position = Vector3.MoveTowards(targetJugador.transform.position,_target.position,speed*Time.deltaTime);
         //transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnCollisionEnter(Collision collision)
     {
-        ContactPoint contact = other.GetContact(0);
-        //explode();
-        return;
+        foreach (ContactPoint contact in collision.contacts)
+        {
+        //ContactPoint contact = other.GetContact(0);
+        explode();
+        //return;
+        }
     }
 
-    /* void explode()
+    void explode()
     {
         GameObject explosion = (GameObject)Instantiate(hitExplosion, transform.position, transform.rotation);
-        Destroy(gameObject);
+        this.gameObject.SetActive(false);
         Destroy(explosion, 1f);
-    }*/
+    }
+
+    IEnumerator LateCall(float seconds)
+     {
+        if (gameObject.activeInHierarchy)
+            gameObject.SetActive(true);
+         
+        yield return new WaitForSeconds(seconds);
+  
+        gameObject.SetActive(false);
+     }
 }

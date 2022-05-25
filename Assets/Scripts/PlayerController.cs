@@ -35,6 +35,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Transform barrelTransform;
     [SerializeField] Transform bulletParent;
     [SerializeField] float bulletHitMissDistance = 25;
+    [SerializeField] public PoolManager poolManager;
+    [SerializeField] Transform spawnPoint;
 
     [Header("UI")]
     public TextMeshProUGUI ammoDisplay;
@@ -60,6 +62,7 @@ public class PlayerController : MonoBehaviour
 
     private int bulletsCount;
     private int ammo;
+    public int bulletType;
 
     int layerMask;
 
@@ -281,7 +284,9 @@ public class PlayerController : MonoBehaviour
         if (Global.ISaim == true && Global.witchAvatarIsOn == 1 && Global.reloading == false)
         {
             RaycastHit hit;
-            GameObject bullet = GameObject.Instantiate(bulletPrefab, barrelTransform.position, Quaternion.identity, bulletParent);
+            GameObject bullet = PoolManager.instance.GetPooledObject(bulletType);
+            bullet.transform.position = spawnPoint.position;
+            bullet.SetActive(true);
             BulletController bulletController = bullet.GetComponent<BulletController>();
                       
             if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, Mathf.Infinity))
