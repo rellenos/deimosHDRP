@@ -18,9 +18,10 @@ public class Redentor : MonoBehaviour
    public bool isDead;
 
    public GameObject deathExplosion;
+   public GameObject target;
    public Animator ani;
    public Quaternion angle;
-   public GameObject target;
+   
 
    void Start()
    {
