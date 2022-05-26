@@ -6,7 +6,7 @@ using TMPro;
 public class Dialogue : MonoBehaviour
 {
     public TextMeshProUGUI textComponent;
-    [TextArea(4, 6)] public string[] lines;
+    [TextArea(6, 8)] public string[] lines;
     public float textSpeed;
 
     public GameObject dialogue1;

@@ -25,6 +25,11 @@ public class Collectable : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        text.SetActive(false);
+    }
+
     private void FixedUpdate()
     {
         if (Input.GetKeyDown(KeyCode.C))

@@ -20,9 +20,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float currentHealth;
     [SerializeField] float damage = 10;
     [SerializeField] CharacterController controller;
-    public static Vector3 lastCheckpointPos = new Vector3(319, 50, 183);
+    public static Vector3 lastCheckpointPos = new Vector3(136, 34, 191);
 
-    //default (146, 2, 135);
+    //game spawn (136, 34, 191);
+    //test ia spawn (146, 2, 135);
+    //puzle pruebas (319, 50, 183);
 
     [Header("Character")]
     [SerializeField] GameObject Player1;
@@ -46,6 +48,12 @@ public class PlayerController : MonoBehaviour
     public GameObject dialogueStart;
     public GameObject dialogueLab;
     public GameObject dialogueAntenna;
+    public GameObject dialogueRedentor;
+    public GameObject tuto1;
+    public GameObject tuto2;
+    public GameObject tuto3;
+    public GameObject tuto4;
+
     //public GameObject gameOver;
 
     [Header("Interaction")]
@@ -285,6 +293,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Global.ISaim == true && Global.witchAvatarIsOn == 1 && Global.reloading == false)
         {
+            
             RaycastHit hit;
             GameObject bullet = PoolManager.instance.GetPooledObject(bulletType);
             bullet.transform.position = spawnPoint.position;
@@ -386,6 +395,32 @@ public class PlayerController : MonoBehaviour
         {
             dialogueAntenna.SetActive(true);
         }
+
+        if (other.gameObject.CompareTag("DialogueRedentor"))
+        {
+            dialogueRedentor.SetActive(true);
+        }
+
+        if (other.gameObject.CompareTag("Tuto1"))
+        {
+            tuto1.SetActive(true);
+        }
+
+        if (other.gameObject.CompareTag("Tuto2"))
+        {
+            tuto2.SetActive(true);
+        }
+
+        if (other.gameObject.CompareTag("Tuto3"))
+        {
+            tuto3.SetActive(true);
+        }
+
+        if (other.gameObject.CompareTag("Tuto4"))
+        {
+            tuto4.SetActive(true);
+        }
+        
     }
 
     private void OnCollisionEnter(Collision other)    

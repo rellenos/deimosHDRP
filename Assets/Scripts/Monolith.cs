@@ -10,6 +10,7 @@ public class Monolith : MonoBehaviour
     public GameObject particlesCircle;
     public GameObject particlesSplash;
     public GameObject UI;
+    public AudioSource monolith;
     [SerializeField] private PlayerInput playerInput;
 
     void Start()
@@ -29,6 +30,7 @@ public class Monolith : MonoBehaviour
                 //Debug.Log ("activado");
                 PlayerController.lastCheckpointPos = transform.position;
                 ani.SetBool("activated", true);
+                monolith.Play();
                 particlesCircle.SetActive(true);
                 particlesSplash.SetActive(true);
                 Destroy(UI);

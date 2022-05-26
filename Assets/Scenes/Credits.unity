@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1481.7754, g: 1835.8867, b: 2430.4492, a: 1}
+  m_IndirectSpecularColor: {r: 1481.9727, g: 1836.0449, b: 2430.713, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -472,7 +472,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: BACK
+  m_text: atras
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8007321c6d9f6e34abaea7a22b051031, type: 2}
   m_sharedMaterial: {fileID: -4490146266183400577, guid: 8007321c6d9f6e34abaea7a22b051031, type: 2}
@@ -725,7 +725,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Game Director:
+  m_text: 'director
 
 
     Erik Ortiz
@@ -733,7 +733,7 @@ MonoBehaviour:
 
 
 
-    Lead 3D Art:
+    lider del arte 3D
 
 
     Sara Sevillano
@@ -741,27 +741,29 @@ MonoBehaviour:
 
 
 
-    3D
-    Art crew:
+    equipo
+    del arte 3d
 
 
     Daniel Mansilla
 
     Erik Ortiz
 
-
-
-
-    Lead Programmer:
-
-
-    Daniel
-    Mansilla
+    sara sevillano
 
 
 
 
-    Lead 2D Art:
+    lider
+    de programacion
+
+
+    Daniel Mansilla
+
+
+
+
+    lider del arte 2d
 
 
     Sara Sevillano
@@ -769,7 +771,7 @@ MonoBehaviour:
 
 
 
-    Music:
+    musica
 
 
     Gwen

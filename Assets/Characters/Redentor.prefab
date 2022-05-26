@@ -559,14 +559,14 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   timeRemaining: 2
-  damage: 7
+  damage: 14
   destroyDelay: 2.2
   attacking: 0
   isDead: 0
   deathExplosion: {fileID: 6763139650854493408, guid: 2612e51bec17fd544a06fad8d79cec44, type: 3}
+  target: {fileID: 0}
   ani: {fileID: 1228661023919191158}
   angle: {x: 0, y: 0, z: 0, w: 0}
-  target: {fileID: 0}
 --- !u!1 &2220532395310666436
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FireBullet : MonoBehaviour
 {
-    [SerializeField] private GameObject EnemyBullet;
+    [SerializeField] private GameObject bullet;
     [SerializeField] public GameObject target;
 
     [SerializeField] private float timer = 0.33f;
@@ -12,13 +12,9 @@ public class FireBullet : MonoBehaviour
     [SerializeField] private int counter;
     [SerializeField] private int maxCounter = 200;
 
-    public PoolManager poolManager;
-    [SerializeField] Transform spawnPoint;
-
     Transform Player;
 
     public bool playerDetected = false;
-     public int bulletType;
 
     void Start()
     {   
@@ -41,7 +37,7 @@ public class FireBullet : MonoBehaviour
         }
     }
 
-    void OnTriggerEnterCollider(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         //if (Vector3.Distance(transform.position, target.transform.position) < 30)
         //{
@@ -61,9 +57,7 @@ public class FireBullet : MonoBehaviour
         for(int i=0; i<maxCounter && playerDetected; i++)
         {
             counter++;
-            GameObject EnemyBullet = PoolManager.instance.GetPooledObject(bulletType);
-            EnemyBullet.transform.position = spawnPoint.position;
-            EnemyBullet.SetActive(true);
+            Instantiate(bullet, transform.position, transform.rotation);
             yield return new WaitForSeconds(timer);
         }
     }

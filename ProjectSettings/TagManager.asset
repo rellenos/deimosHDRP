@@ -23,6 +23,11 @@ TagManager:
   - DialogueStart
   - DialogueLab
   - DialogueAntenna
+  - Tuto1
+  - Tuto2
+  - Tuto3
+  - Tuto4
+  - DialogueRedentor
   layers:
   - Default
   - TransparentFX

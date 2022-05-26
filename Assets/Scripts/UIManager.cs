@@ -156,11 +156,14 @@ public class UIManager : MonoBehaviour
             resDropdown.AddOptions(options);
             resDropdown.value = actualRes;
             resDropdown.RefreshShownValue();
+
+            resDropdown.value = PlayerPrefs.GetInt("numberRes", 0);
         }
     }
 
     public void ChangeRes(int resIndex)
     {
+        PlayerPrefs.SetInt("numberRes", resDropdown.value);
         Resolution resolution = resolutions[resIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }

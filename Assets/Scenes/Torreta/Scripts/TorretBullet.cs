@@ -9,27 +9,21 @@ public class TorretBullet : MonoBehaviour
     private float speed = 50f;
     private float timeToDestroy = 1f;
 
-    public Vector3 target { get; set; }
-
-    public bool hit { get; set; }
+    private Vector3 target;
 
     private void OnEnable()
     {
-        StartCoroutine(LateCall(timeToDestroy));
+        Destroy(gameObject, timeToDestroy);
     }
 
-    //private void SetBullet(Vector3 target)
-    //{
-    //    this.target = target;
-    //}
+    private void SetBullet(Vector3 target)
+    {
+        this.target = target;
+    }
 
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
-        if (!hit && Vector3.Distance(transform.position, target ) < .01f)
-        {
-            this.gameObject.SetActive(false);
-        }
+        transform.Translate(Vector3.forward * Time.deltaTime * speed);
         //transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
         //bullet.transform.position = Vector3.MoveTowards(targetJugador.transform.position,_target.position,speed*Time.deltaTime);
         //transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
@@ -52,13 +46,13 @@ public class TorretBullet : MonoBehaviour
         Destroy(explosion, 1f);
     }
 
-    IEnumerator LateCall(float seconds)
-     {
-        if (gameObject.activeInHierarchy)
-            gameObject.SetActive(true);
+    //IEnumerator LateCall(float seconds)
+    //{
+        //if (gameObject.activeInHierarchy)
+        //    gameObject.SetActive(true);
          
-        yield return new WaitForSeconds(seconds);
+        //yield return new WaitForSeconds(seconds);
   
-        gameObject.SetActive(false);
-     }
+        //gameObject.SetActive(false);
+    //}
 }

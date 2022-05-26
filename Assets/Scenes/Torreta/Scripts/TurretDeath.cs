@@ -10,9 +10,11 @@ public class TurretDeath : MonoBehaviour
     public float destroyDelay = 1;
 
     public GameObject deathExplosion;
+    //public AudioSource deathSound;
 
     void Start()
     {
+        Global.isTurretDead = false;
         currentHealth = maxHealth;
     }
     
@@ -25,6 +27,7 @@ public class TurretDeath : MonoBehaviour
 
             if(currentHealth <= 0)
             {
+                Global.isTurretDead = true;
                 StartCoroutine(Destroy());
             }
         }
@@ -35,6 +38,7 @@ public class TurretDeath : MonoBehaviour
         yield return new WaitForSeconds(destroyDelay);
         Destroy(gameObject);
         GameObject explosion = (GameObject)Instantiate(deathExplosion, transform.position, transform.rotation);
+        //deathSound.Play();
         Destroy(explosion, 2f);
     }
 }
