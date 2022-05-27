@@ -72,7 +72,7 @@ public class SwitchCharacter : MonoBehaviour
                     character2.gameObject.SetActive(true);
                     alytheaIMG.SetActive(false);
                     irIMG.SetActive(true);  
-                    gameObject.transform.position = originalPos;
+                    //gameObject.transform.position = originalPos;
                     break;
 
                 case 2:
@@ -84,7 +84,7 @@ public class SwitchCharacter : MonoBehaviour
                     animIR.keepAnimatorControllerStateOnDisable = true;
                     character1.gameObject.SetActive(true);
                     character2.gameObject.SetActive(false);
-                    gameObject.transform.position = originalPos;
+                    //gameObject.transform.position = originalPos;
                     alytheaIMG.SetActive(true);
                     irIMG.SetActive(false);  
                     break;

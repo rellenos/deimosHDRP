@@ -53,11 +53,11 @@ public class UIManager : MonoBehaviour
 
         if (Screen.fullScreen) {toggle.isOn = true;}
         else {toggle.isOn = false;}
-        CheckResolution();
+        //CheckResolution();
 
         quality = PlayerPrefs.GetInt("qualityLevel", 1);
         dropdown.value = quality;
-        AdjustQuality();
+        //AdjustQuality();
     }
     
     void Update()
@@ -130,14 +130,14 @@ public class UIManager : MonoBehaviour
         Screen.fullScreen = fullScreen;
     }
 
-    public void AdjustQuality()
+    /* public void AdjustQuality()
     {
         QualitySettings.SetQualityLevel(dropdown.value);
         PlayerPrefs.SetInt("qualityLevel", dropdown.value);
         quality = dropdown.value;
-    }
+    }*/
 
-    public void CheckResolution()
+    /* public void CheckResolution()
     {
         resolutions = Screen.resolutions;
         resDropdown.ClearOptions();
@@ -159,14 +159,14 @@ public class UIManager : MonoBehaviour
 
             resDropdown.value = PlayerPrefs.GetInt("numberRes", 0);
         }
-    }
+    }*/
 
-    public void ChangeRes(int resIndex)
+    /* public void ChangeRes(int resIndex)
     {
         PlayerPrefs.SetInt("numberRes", resDropdown.value);
         Resolution resolution = resolutions[resIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
-    }
+    }*/
 
     public void HideCollectable()
     {

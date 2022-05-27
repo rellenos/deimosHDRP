@@ -8,13 +8,13 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Main Menu.unity
     guid: 5dcbdad74c7551b4ea4794846b2cc507
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Credits.unity
     guid: d40f4285a79c49543aab53830ff56fd0
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Cinematica.unity
     guid: 9945c02895fb6594f8ef58662855b08a
   - enabled: 1

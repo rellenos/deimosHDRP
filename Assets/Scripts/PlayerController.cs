@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float currentHealth;
     [SerializeField] float damage = 10;
     [SerializeField] CharacterController controller;
-    public static Vector3 lastCheckpointPos = new Vector3(136, 34, 191);
+    //public static Vector3 lastCheckpointPos = new Vector3(136, 34, 191);
 
     //game spawn (136, 34, 191);
     //test ia spawn (146, 2, 135);
@@ -111,7 +111,7 @@ public class PlayerController : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
 
-        GameObject.FindGameObjectWithTag("Player").transform.position = lastCheckpointPos;
+        //GameObject.FindGameObjectWithTag("Player").transform.position = lastCheckpointPos;
     }
 
     private void OnEnable()

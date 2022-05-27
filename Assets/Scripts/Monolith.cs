@@ -11,7 +11,6 @@ public class Monolith : MonoBehaviour
     public GameObject particlesSplash;
     public GameObject UI;
     public AudioSource monolith;
-    [SerializeField] private PlayerInput playerInput;
 
     void Start()
     {
@@ -28,7 +27,7 @@ public class Monolith : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 //Debug.Log ("activado");
-                PlayerController.lastCheckpointPos = transform.position;
+                //PlayerController.lastCheckpointPos = transform.position;
                 ani.SetBool("activated", true);
                 monolith.Play();
                 particlesCircle.SetActive(true);
